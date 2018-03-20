@@ -7,14 +7,16 @@ class App extends Component {
     super(props)
 
     this.state = {
-      frame: 0
+      percentScrolled: 0.1
     }
 
     this.handleScroll = this.handleScroll.bind(this)
   }
 
   handleScroll() {
-    this.setState({ frame: window.scrollY })
+    const percentScrolled =
+      ((window.scrollY / document.body.scrollHeight) * 100).toFixed(1)
+    this.setState({ percentScrolled: percentScrolled })
   }
 
   componentDidMount() {
@@ -28,7 +30,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HeaderScreen frame={this.state.frame} />
+        <HeaderScreen
+          scrolled={this.state.percentScrolled}
+        />
       </div>
     )
   }

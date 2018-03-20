@@ -162,7 +162,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(34);
+var	fixUrls = __webpack_require__(36);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -490,11 +490,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(33);
+__webpack_require__(35);
 
 var _HeaderScreen = __webpack_require__(18);
 
@@ -517,7 +517,7 @@ var App = function (_Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      frame: 0
+      percentScrolled: 0.1
     };
 
     _this.handleScroll = _this.handleScroll.bind(_this);
@@ -527,7 +527,8 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'handleScroll',
     value: function handleScroll() {
-      this.setState({ frame: window.scrollY });
+      var percentScrolled = (window.scrollY / document.body.scrollHeight * 100).toFixed(1);
+      this.setState({ percentScrolled: percentScrolled });
     }
   }, {
     key: 'componentDidMount',
@@ -545,7 +546,9 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_HeaderScreen2.default, { frame: this.state.frame })
+        _react2.default.createElement(_HeaderScreen2.default, {
+          scrolled: this.state.percentScrolled
+        })
       );
     }
   }]);
@@ -568,11 +571,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(32);
+__webpack_require__(34);
+
+var _Planet = __webpack_require__(19);
+
+var _Planet2 = _interopRequireDefault(_Planet);
+
+var _Sun = __webpack_require__(20);
+
+var _Sun2 = _interopRequireDefault(_Sun);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -594,20 +605,17 @@ var HeaderScreen = function (_Component) {
   _createClass(HeaderScreen, [{
     key: 'render',
     value: function render() {
-      console.log(this.props.frame);
+      console.log(this.props.scrolled);
+      var scrolled = this.props.scrolled;
+
       return _react2.default.createElement(
         'div',
         { className: 'container' },
         _react2.default.createElement(
           'div',
           { className: 'background' },
-          _react2.default.createElement(
-            'div',
-            { className: 'planet' },
-            _react2.default.createElement('div', { className: 'planet-inner' }),
-            _react2.default.createElement('div', { className: 'planet-shadow' })
-          ),
-          _react2.default.createElement('div', { className: 'sun' })
+          _react2.default.createElement(_Planet2.default, { scrolled: scrolled }),
+          _react2.default.createElement(_Sun2.default, { scrolled: scrolled })
         )
       );
     }
@@ -622,18 +630,101 @@ exports.default = HeaderScreen;
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+  var scrolled = _ref.scrolled;
+
+  return _react2.default.createElement(
+    'div',
+    { style: styles.outer },
+    _react2.default.createElement('div', { style: styles.inner }),
+    _react2.default.createElement('div', { style: {
+        position: 'relative',
+        background: 'rgb(35, 35, 35)',
+        width: '30vw',
+        height: '27vw',
+        borderRadius: '50%',
+        bottom: 91 - scrolled / 2 + '%',
+        boxShadow: '0px -5px 5px 10px rgb(35, 35, 35)'
+      } })
+  );
+};
+
+var styles = {
+  outer: {
+    background: 'grey',
+    width: '30vw',
+    height: '30vw',
+    borderRadius: '50%',
+    marginTop: '85vh',
+    zIndex: 1
+  },
+  inner: {
+    background: 'rgb(51, 89, 150)',
+    width: '30vw',
+    height: '30vw',
+    borderRadius: '50%'
+  }
+};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+  var scrolled = _ref.scrolled;
+
+  return _react2.default.createElement('div', { style: {
+      position: 'absolute',
+      backgroundColor: 'goldenrod',
+      width: '7vw',
+      height: '7vw',
+      borderRadius: '50%',
+      marginTop: 90 - scrolled * 2 + 'vh'
+    } });
+};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
 exports = module.exports = __webpack_require__(8)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".container {\n  display: grid;\n  grid-template-columns: 1fr;\n  height: 4000px;\n}\n\n.background {\n  display: flex;\n  flex: 1;\n  background: rgb(35, 35, 35);\n  justify-content: center;\n}\n\n.planet {\n  background: grey;\n  width: 30vw;\n  height: 30vw;\n  border-radius: 50%;\n  margin-top: 85vh;\n  z-index: 1\n}\n\n.planet-inner {\n  background: rgb(51, 89, 150);\n  width: 30vw;\n  height: 30vw;\n  border-radius: 50%;\n}\n\n.planet-shadow {\n  position: relative;\n  background: rgb(35, 35, 35);\n  width: 30vw;\n  height: 27vw;\n  border-radius: 50%;\n  bottom: 87%;\n  box-shadow: 0px -5px 5px 10px rgb(35, 35, 35);\n  -moz-box-shadow: 0px -5px 5px 10px rgb(35, 35, 35);\n}\n\n.sun {\n  position: absolute;\n  background: goldenrod;\n  width: 7vw;\n  height: 7vw;\n  border-radius: 50%;\n  margin-top: 90vh;\n}\n\n/* .media (max-width: 500px) {\n  .planet {\n    margin-top: 80vh;\n  }\n} */\n", ""]);
+exports.push([module.i, ".container {\n  display: grid;\n  grid-template-columns: 1fr;\n  height: 4000px;\n}\n\n.background {\n  display: flex;\n  flex: 1;\n  background: rgb(35, 35, 35);\n  justify-content: center;\n}\n\n/* .planet {\n  background: grey;\n  width: 30vw;\n  height: 30vw;\n  border-radius: 50%;\n  margin-top: 85vh;\n  z-index: 1\n} */\n\n/* .planet-inner {\n  background: rgb(51, 89, 150);\n  width: 30vw;\n  height: 30vw;\n  border-radius: 50%;\n}\n\n.planet-shadow {\n  position: relative;\n  background: rgb(35, 35, 35);\n  width: 30vw;\n  height: 27vw;\n  border-radius: 50%;\n  bottom: 87%;\n  box-shadow: 0px -5px 5px 10px rgb(35, 35, 35);\n  -moz-box-shadow: 0px -5px 5px 10px rgb(35, 35, 35);\n} */\n\n/* .sun {\n  position: absolute;\n  background: goldenrod;\n  width: 7vw;\n  height: 7vw;\n  border-radius: 50%;\n  margin-top: 90vh;\n} */\n\n/* .media (max-width: 500px) {\n  .planet {\n    margin-top: 80vh;\n  }\n} */\n", ""]);
 
 // exports
 
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)(false);
@@ -647,8 +738,6 @@ exports.push([module.i, ".shit {\n  color: red;\n  font-size: 10px;\n}\n", ""]);
 
 
 /***/ },
-/* 21 */,
-/* 22 */,
 /* 23 */,
 /* 24 */,
 /* 25 */,
@@ -658,11 +747,13 @@ exports.push([module.i, ".shit {\n  color: red;\n  font-size: 10px;\n}\n", ""]);
 /* 29 */,
 /* 30 */,
 /* 31 */,
-/* 32 */
+/* 32 */,
+/* 33 */,
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(19);
+var content = __webpack_require__(21);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -708,11 +799,11 @@ if(false) {
 }
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(20);
+var content = __webpack_require__(22);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -758,7 +849,7 @@ if(false) {
 }
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports) {
 
 
@@ -853,13 +944,13 @@ module.exports = function (css) {
 
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -876,4 +967,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ }
-],[35]);
+],[37]);

@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import '../assets/HeaderScreen.css'
+import Planet from './Planet'
+import Sun from './Sun'
 
 export default class HeaderScreen extends Component {
   render() {
-    console.log(this.props.frame)
+    console.log(this.props.scrolled)
+    const { scrolled } = this.props
     return(
       <div className="container">
         <div className="background">
-          <div className="planet">
-            <div className="planet-inner"></div>
-            <div className="planet-shadow"></div>
-          </div>
-          <div className="sun"></div>
+          <Planet scrolled={scrolled}/>
+          <Sun scrolled={scrolled}/>
         </div>
       </div>
     )
