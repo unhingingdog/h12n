@@ -517,7 +517,8 @@ var App = function (_Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      percentScrolled: 0.1
+      percentScrolled: 0.1,
+      screenWidth: window.innerWidth
     };
 
     _this.handleScroll = _this.handleScroll.bind(_this);
@@ -547,7 +548,8 @@ var App = function (_Component) {
         'div',
         null,
         _react2.default.createElement(_HeaderScreen2.default, {
-          scrolled: this.state.percentScrolled
+          scrolled: this.state.percentScrolled,
+          screenWidth: this.state.screenWidth
         })
       );
     }
@@ -596,26 +598,37 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HeaderScreen = function (_Component) {
   _inherits(HeaderScreen, _Component);
 
-  function HeaderScreen() {
+  function HeaderScreen(props) {
     _classCallCheck(this, HeaderScreen);
 
-    return _possibleConstructorReturn(this, (HeaderScreen.__proto__ || Object.getPrototypeOf(HeaderScreen)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (HeaderScreen.__proto__ || Object.getPrototypeOf(HeaderScreen)).call(this, props));
+
+    _this.isMobile = _this.isMobile.bind(_this);
+    return _this;
   }
 
   _createClass(HeaderScreen, [{
+    key: 'isMobile',
+    value: function isMobile() {
+      return this.props.screenWidth < 1000;
+    }
+  }, {
     key: 'render',
     value: function render() {
-      console.log(this.props.scrolled);
-      var scrolled = this.props.scrolled;
-
       return _react2.default.createElement(
         'div',
         { className: 'container' },
         _react2.default.createElement(
           'div',
           { className: 'background' },
-          _react2.default.createElement(_Planet2.default, { scrolled: scrolled }),
-          _react2.default.createElement(_Sun2.default, { scrolled: scrolled })
+          _react2.default.createElement(_Planet2.default, {
+            scrolled: scrolled,
+            isMobile: this.isMobile()
+          }),
+          _react2.default.createElement(_Sun2.default, {
+            scrolled: scrolled,
+            screenWidth: screenWidth
+          })
         )
       );
     }
@@ -637,52 +650,93 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _earth = __webpack_require__(40);
+var _earth = __webpack_require__(37);
 
 var _earth2 = _interopRequireDefault(_earth);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (_ref) {
-  var scrolled = _ref.scrolled;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  return _react2.default.createElement(
-    'div',
-    { style: styles.outer },
-    _react2.default.createElement('div', { style: {
-        background: 'rgba(51, 89, 150, 0.5)',
-        width: '30vw',
-        height: '30vw',
-        borderRadius: '50%',
-        boxShadow: '0 ' + (5 + scrolled * -2) + 'px 5px goldenrod'
-      } }),
-    _react2.default.createElement('div', { style: {
-        position: 'relative',
-        background: 'rgb(35, 35, 35)',
-        width: '30vw',
-        height: '27vw',
-        borderRadius: '50%',
-        bottom: 91 - scrolled / 3 + '%',
-        boxShadow: '0px -5px ' + (5 + scrolled / 50) + 'px ' + (10 + scrolled / 5) + 'px rgb(35, 35, 35)'
-      } })
-  );
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var styles = {
-  outer: {
-    backgroundImage: 'url(' + _earth2.default + ')',
-    backgroundSize: 'contain',
-    width: '30vw',
-    height: '30vw',
-    borderRadius: '50%',
-    marginTop: '85vh',
-    zIndex: 1
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Planet = function (_Component) {
+  _inherits(Planet, _Component);
+
+  function Planet(props) {
+    _classCallCheck(this, Planet);
+
+    var _this = _possibleConstructorReturn(this, (Planet.__proto__ || Object.getPrototypeOf(Planet)).call(this, props));
+
+    _this.planetShine = _this.planetShine.bind(_this);
+    _this.planetWidth = _this.planetWidth.bind(_this);
+    return _this;
   }
-};
+
+  _createClass(Planet, [{
+    key: 'planetShine',
+    value: function planetShine() {
+      var scrolled = this.props.scrolled;
+
+      if (scrolled > 7) return 0;
+      return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2;
+    }
+  }, {
+    key: 'planetWidth',
+    value: function planetWidth() {
+      this.props.isMobile ? '30vw' : '70vw';
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var scrolled = this.props.scrolled;
+
+      var planetShine = this.planetShine();
+      var planetWidth = this.planetWidth();
+
+      return _react2.default.createElement(
+        'div',
+        { style: {
+            backgroundImage: 'url(' + _earth2.default + ')',
+            backgroundSize: 'contain',
+            width: planetWidth,
+            height: planetWidth,
+            borderRadius: '50%',
+            marginTop: '85vh',
+            zIndex: 1
+          } },
+        _react2.default.createElement('div', { style: {
+            background: 'rgba(109, 145, 145, 0.65)',
+            width: planetWidth,
+            height: planetWidth,
+            borderRadius: '50%',
+            boxShadow: '0 ' + (5 + planetShine) + 'px 10px rgb(255, 221, 56),\n                      0 ' + (3 + planetShine * 0.8) + 'px 5px white'
+          } }),
+        _react2.default.createElement('div', { style: {
+            position: 'relative',
+            background: 'rgb(35, 35, 35)',
+            width: planetWidth,
+            height: planetWidth,
+            borderRadius: '50%',
+            bottom: 91 - scrolled / 4 + '%',
+            boxShadow: '0px -5px ' + (5 + scrolled / 50) + 'px ' + (10 + scrolled / 5) + 'px rgb(35, 35, 35)'
+          } })
+      );
+    }
+  }]);
+
+  return Planet;
+}(_react.Component);
+
+exports.default = Planet;
 
 /***/ },
 /* 20 */
@@ -706,11 +760,11 @@ exports.default = function (_ref) {
 
   return _react2.default.createElement('div', { style: {
       position: 'absolute',
-      backgroundColor: 'rgb(255, 230, 142)',
+      backgroundColor: 'rgb(255, 234, 193)',
       width: '7vw',
       height: '7vw',
       borderRadius: '50%',
-      marginTop: 93 - scrolled * 2 + 'vh',
+      marginTop: 93 - scrolled * 2.4 + 'vh',
       boxShadow: '0 0 80px goldenrod,\n                  0 0 20px goldenrod,\n                  0 0 60px rgb(255, 144, 0)'
     } });
 };
@@ -950,7 +1004,12 @@ module.exports = function (css) {
 
 
 /***/ },
-/* 37 */,
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "82fb310d1585e19bf942d99733836248.gif";
+
+/***/ },
 /* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -972,13 +1031,6 @@ var _App2 = _interopRequireDefault(_App);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
-
-/***/ },
-/* 39 */,
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "6b0bea168a96c621c7885deea0e8489e.gif";
 
 /***/ }
 ],[38]);
