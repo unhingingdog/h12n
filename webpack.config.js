@@ -16,7 +16,6 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].js'
   },
-  watch:true,
   module: {
     rules: [
       {

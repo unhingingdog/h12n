@@ -7,8 +7,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      percentScrolled: 0.1,
-      screenWidth: window.innerWidth
+      percentScrolled: 0.1
     }
 
     this.handleScroll = this.handleScroll.bind(this)
@@ -33,7 +32,6 @@ class App extends Component {
       <div>
         <HeaderScreen
           scrolled={this.state.percentScrolled}
-          screenWidth={this.state.screenWidth}
         />
       </div>
     )

@@ -4,27 +4,14 @@ import Planet from './Planet'
 import Sun from './Sun'
 
 export default class HeaderScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.isMobile = this.isMobile.bind(this)
-  }
-
-  isMobile() {
-    return (this.props.screenWidth < 1000)
-  }
-
   render() {
+    console.log(this.props.scrolled)
+    const { scrolled } = this.props
     return(
       <div className="container">
         <div className="background">
-          <Planet
-            scrolled={scrolled}
-            isMobile={this.isMobile()}
-          />
-          <Sun
-            scrolled={scrolled}
-            screenWidth={screenWidth}
-          />
+          <Planet scrolled={scrolled}/>
+          <Sun scrolled={scrolled}/>
         </div>
       </div>
     )

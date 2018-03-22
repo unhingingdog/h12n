@@ -517,8 +517,7 @@ var App = function (_Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      percentScrolled: 0.1,
-      screenWidth: window.innerWidth
+      percentScrolled: 0.1
     };
 
     _this.handleScroll = _this.handleScroll.bind(_this);
@@ -548,8 +547,7 @@ var App = function (_Component) {
         'div',
         null,
         _react2.default.createElement(_HeaderScreen2.default, {
-          scrolled: this.state.percentScrolled,
-          screenWidth: this.state.screenWidth
+          scrolled: this.state.percentScrolled
         })
       );
     }
@@ -598,37 +596,26 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HeaderScreen = function (_Component) {
   _inherits(HeaderScreen, _Component);
 
-  function HeaderScreen(props) {
+  function HeaderScreen() {
     _classCallCheck(this, HeaderScreen);
 
-    var _this = _possibleConstructorReturn(this, (HeaderScreen.__proto__ || Object.getPrototypeOf(HeaderScreen)).call(this, props));
-
-    _this.isMobile = _this.isMobile.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (HeaderScreen.__proto__ || Object.getPrototypeOf(HeaderScreen)).apply(this, arguments));
   }
 
   _createClass(HeaderScreen, [{
-    key: 'isMobile',
-    value: function isMobile() {
-      return this.props.screenWidth < 1000;
-    }
-  }, {
     key: 'render',
     value: function render() {
+      console.log(this.props.scrolled);
+      var scrolled = this.props.scrolled;
+
       return _react2.default.createElement(
         'div',
         { className: 'container' },
         _react2.default.createElement(
           'div',
           { className: 'background' },
-          _react2.default.createElement(_Planet2.default, {
-            scrolled: scrolled,
-            isMobile: this.isMobile()
-          }),
-          _react2.default.createElement(_Sun2.default, {
-            scrolled: scrolled,
-            screenWidth: screenWidth
-          })
+          _react2.default.createElement(_Planet2.default, { scrolled: scrolled }),
+          _react2.default.createElement(_Sun2.default, { scrolled: scrolled })
         )
       );
     }
@@ -677,7 +664,9 @@ var Planet = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Planet.__proto__ || Object.getPrototypeOf(Planet)).call(this, props));
 
     _this.planetShine = _this.planetShine.bind(_this);
-    _this.planetWidth = _this.planetWidth.bind(_this);
+    _this.planetShadowSpread = _this.planetShadowSpread.bind(_this);
+    _this.planetShadowHeight = _this.planetShadowHeight.bind(_this);
+    _this.planetShadowWidth = _this.planetShadowWidth.bind(_this);
     return _this;
   }
 
@@ -690,9 +679,25 @@ var Planet = function (_Component) {
       return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2;
     }
   }, {
-    key: 'planetWidth',
-    value: function planetWidth() {
-      this.props.isMobile ? '30vw' : '70vw';
+    key: 'planetShadowSpread',
+    value: function planetShadowSpread() {
+      var scrolled = this.props.scrolled;
+
+      return '0px -5px\n            ' + (20 + scrolled / 8) + 'px\n            ' + (10 + scrolled / 10) + 'px\n            rgb(35, 35, 35)';
+    }
+  }, {
+    key: 'planetShadowHeight',
+    value: function planetShadowHeight() {
+      var scrolled = this.props.scrolled;
+
+      return 92 - scrolled / 2 + '%';
+    }
+  }, {
+    key: 'planetShadowWidth',
+    value: function planetShadowWidth() {
+      var scrolled = this.props.scrolled;
+
+      return 30 + scrolled / 10 + 'vw';
     }
   }, {
     key: 'render',
@@ -700,34 +705,26 @@ var Planet = function (_Component) {
       var scrolled = this.props.scrolled;
 
       var planetShine = this.planetShine();
-      var planetWidth = this.planetWidth();
+      console.log(scrolled);
 
       return _react2.default.createElement(
         'div',
-        { style: {
-            backgroundImage: 'url(' + _earth2.default + ')',
-            backgroundSize: 'contain',
-            width: planetWidth,
-            height: planetWidth,
-            borderRadius: '50%',
-            marginTop: '85vh',
-            zIndex: 1
-          } },
+        { style: styles.outer },
         _react2.default.createElement('div', { style: {
             background: 'rgba(109, 145, 145, 0.65)',
-            width: planetWidth,
-            height: planetWidth,
+            width: '30vw',
+            height: '30vw',
             borderRadius: '50%',
             boxShadow: '0 ' + (5 + planetShine) + 'px 10px rgb(255, 221, 56),\n                      0 ' + (3 + planetShine * 0.8) + 'px 5px white'
           } }),
         _react2.default.createElement('div', { style: {
             position: 'relative',
             background: 'rgb(35, 35, 35)',
-            width: planetWidth,
-            height: planetWidth,
+            width: this.planetShadowWidth(),
+            height: '27vw',
             borderRadius: '50%',
-            bottom: 91 - scrolled / 4 + '%',
-            boxShadow: '0px -5px ' + (5 + scrolled / 50) + 'px ' + (10 + scrolled / 5) + 'px rgb(35, 35, 35)'
+            bottom: this.planetShadowHeight(),
+            boxShadow: this.planetShadowSpread()
           } })
       );
     }
@@ -737,6 +734,19 @@ var Planet = function (_Component) {
 }(_react.Component);
 
 exports.default = Planet;
+
+
+var styles = {
+  outer: {
+    backgroundImage: 'url(' + _earth2.default + ')',
+    backgroundSize: 'contain',
+    width: '30vw',
+    height: '30vw',
+    borderRadius: '50%',
+    marginTop: '85vh',
+    zIndex: 1
+  }
+};
 
 /***/ },
 /* 20 */

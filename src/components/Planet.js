@@ -4,8 +4,11 @@ import earth from '../assets/images/earth.gif'
 export default class Planet extends Component {
   constructor(props) {
     super(props)
+
     this.planetShine = this.planetShine.bind(this)
-    this.planetWidth = this.planetWidth.bind(this)
+    this.planetShadowSpread = this.planetShadowSpread.bind(this)
+    this.planetShadowHeight = this.planetShadowHeight.bind(this)
+    this.planetShadowWidth = this.planetShadowWidth.bind(this)
   }
 
   planetShine() {
@@ -14,30 +17,35 @@ export default class Planet extends Component {
     return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2
   }
 
-  planetWidth() {
-    this.props.isMobile ? '30vw' : '70vw'
+  planetShadowSpread() {
+    const { scrolled } = this.props
+    return `0px -5px
+            ${20 + scrolled/8}px
+            ${10 + scrolled/10}px
+            rgb(35, 35, 35)`
+  }
+
+  planetShadowHeight() {
+    const { scrolled } = this.props
+    return `${92 - (scrolled / 2)}%`
+  }
+
+  planetShadowWidth() {
+    const { scrolled } = this.props
+    return `${30 + scrolled/10}vw`
   }
 
   render() {
     const { scrolled } = this.props
     const planetShine = this.planetShine()
-    const planetWidth = this.planetWidth()
-
+    console.log(scrolled)
 
     return(
-      <div style={{
-        backgroundImage: `url(${earth})`,
-        backgroundSize: 'contain',
-        width: planetWidth,
-        height: planetWidth,
-        borderRadius: '50%',
-        marginTop: '85vh',
-        zIndex: 1
-      }}>
+      <div style={styles.outer}>
         <div style={{
           background: 'rgba(109, 145, 145, 0.65)',
-          width: planetWidth,
-          height: planetWidth,
+          width: '30vw',
+          height: '30vw',
           borderRadius: '50%',
           boxShadow: `0 ${5 + planetShine}px 10px rgb(255, 221, 56),
                       0 ${3 + planetShine * 0.8}px 5px white`
@@ -45,13 +53,25 @@ export default class Planet extends Component {
         <div style={{
           position: 'relative',
           background: `rgb(35, 35, 35)`,
-          width: planetWidth,
-          height: planetWidth,
+          width: this.planetShadowWidth(),
+          height: '27vw',
           borderRadius: '50%',
-          bottom: `${91 - (scrolled / 4)}%`,
-          boxShadow: `0px -5px ${5 + scrolled / 50}px ${10 + scrolled / 5}px rgb(35, 35, 35)`
+          bottom: this.planetShadowHeight(),
+          boxShadow: this.planetShadowSpread()
         }}></div>
       </div>
     )
+  }
+}
+
+const styles = {
+  outer: {
+    backgroundImage: `url(${earth})`,
+    backgroundSize: 'contain',
+    width: '30vw',
+    height: '30vw',
+    borderRadius: '50%',
+    marginTop: '85vh',
+    zIndex: 1
   }
 }
