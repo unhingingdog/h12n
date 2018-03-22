@@ -19,8 +19,8 @@ export default class Planet extends Component {
   planetShadowSpread() {
     const { scrolled } = this.props
     return `0px -5px
-            ${20 + scrolled/8}px
-            ${10 + scrolled/10}px
+            ${20 + scrolled/3}px
+            ${10 + scrolled/5}px
             rgb(35, 35, 35)`
   }
 
@@ -29,8 +29,8 @@ export default class Planet extends Component {
     return {
       horizonShine: this.horizonShine(),
       planetShadowSpread: this.planetShadowSpread(),
-      planetShadowHeight: `${92 - (scrolled / 2)}%`,
-      planetShadowWidth: `${30 + scrolled/8}vw`
+      planetShadowHeight: `${3 + scrolled / 2.5}vh`,
+      planetShadowWidth: `${30 + scrolled / 2}vw`
     }
   }
 
@@ -53,12 +53,12 @@ export default class Planet extends Component {
                       5px white`
         }}></div>
         <div style={{
-          position: 'relative',
-          background: `rgb(35, 35, 35)`,
+          position: 'absolute',
+          background: 'rgb(35, 35, 35)',
           width: planetStyles.planetShadowWidth,
           height: '27vw',
           borderRadius: '50%',
-          bottom: planetStyles.planetShadowHeight,
+          marginTop: planetStyles.planetShadowHeight,
           boxShadow: planetStyles.planetShadowSpread
         }}></div>
       </div>
@@ -68,6 +68,8 @@ export default class Planet extends Component {
 
 const styles = {
   outer: {
+    display: 'flex',
+    justifyContent: 'center',
     backgroundImage: `url(${earth})`,
     backgroundSize: 'contain',
     width: '30vw',

@@ -682,7 +682,7 @@ var Planet = function (_Component) {
     value: function planetShadowSpread() {
       var scrolled = this.props.scrolled;
 
-      return '0px -5px\n            ' + (20 + scrolled / 8) + 'px\n            ' + (10 + scrolled / 10) + 'px\n            rgb(35, 35, 35)';
+      return '0px -5px\n            ' + (20 + scrolled / 3) + 'px\n            ' + (10 + scrolled / 5) + 'px\n            rgb(35, 35, 35)';
     }
   }, {
     key: 'planetStyleProperties',
@@ -692,8 +692,8 @@ var Planet = function (_Component) {
       return {
         horizonShine: this.horizonShine(),
         planetShadowSpread: this.planetShadowSpread(),
-        planetShadowHeight: 92 - scrolled / 2 + '%',
-        planetShadowWidth: 30 + scrolled / 8 + 'vw'
+        planetShadowHeight: 3 + scrolled / 2.5 + 'vh',
+        planetShadowWidth: 30 + scrolled / 2 + 'vw'
       };
     }
   }, {
@@ -716,12 +716,12 @@ var Planet = function (_Component) {
             boxShadow: '0 ' + (5 + planetStyles.horizonShine) + 'px\n                      10px rgb(255, 221, 56),\n                      0 ' + (3 + planetStyles.horizonShine * 0.8) + 'px\n                      5px white'
           } }),
         _react2.default.createElement('div', { style: {
-            position: 'relative',
+            position: 'absolute',
             background: 'rgb(35, 35, 35)',
             width: planetStyles.planetShadowWidth,
             height: '27vw',
             borderRadius: '50%',
-            bottom: planetStyles.planetShadowHeight,
+            marginTop: planetStyles.planetShadowHeight,
             boxShadow: planetStyles.planetShadowSpread
           } })
       );
@@ -736,6 +736,8 @@ exports.default = Planet;
 
 var styles = {
   outer: {
+    display: 'flex',
+    justifyContent: 'center',
     backgroundImage: 'url(' + _earth2.default + ')',
     backgroundSize: 'contain',
     width: '30vw',
