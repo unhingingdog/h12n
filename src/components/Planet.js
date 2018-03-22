@@ -12,11 +12,14 @@ export default class Planet extends Component {
 
   horizonShine() {
     const { scrolled } = this.props
-    if(scrolled > 7) return 0
+    // if(scrolled > 7) return 0
     return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2
   }
 
   planetShadowSpread() {
+    //pass down width pixels
+    //switch pixels to percent of pixels width
+
     const { scrolled } = this.props
     return `0px -5px
             ${20 + scrolled/3}px
@@ -47,6 +50,7 @@ export default class Planet extends Component {
           width: '30vw',
           height: '30vw',
           borderRadius: '50%',
+          //switch pixels to percent of width
           boxShadow: `0 ${5 + planetStyles.horizonShine}px
                       10px rgb(255, 221, 56),
                       0 ${3 + planetStyles.horizonShine * 0.8}px
@@ -56,7 +60,7 @@ export default class Planet extends Component {
           position: 'absolute',
           background: 'rgb(35, 35, 35)',
           width: planetStyles.planetShadowWidth,
-          height: '27vw',
+          height: `${27 + scrolled/10}vw`,
           borderRadius: '50%',
           marginTop: planetStyles.planetShadowHeight,
           boxShadow: planetStyles.planetShadowSpread

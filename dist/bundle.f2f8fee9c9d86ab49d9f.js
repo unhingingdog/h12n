@@ -673,13 +673,16 @@ var Planet = function (_Component) {
     key: 'horizonShine',
     value: function horizonShine() {
       var scrolled = this.props.scrolled;
+      // if(scrolled > 7) return 0
 
-      if (scrolled > 7) return 0;
       return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2;
     }
   }, {
     key: 'planetShadowSpread',
     value: function planetShadowSpread() {
+      //pass down width pixels
+      //switch pixels to percent of pixels width
+
       var scrolled = this.props.scrolled;
 
       return '0px -5px\n            ' + (20 + scrolled / 3) + 'px\n            ' + (10 + scrolled / 5) + 'px\n            rgb(35, 35, 35)';
@@ -713,13 +716,14 @@ var Planet = function (_Component) {
             width: '30vw',
             height: '30vw',
             borderRadius: '50%',
+            //switch pixels to percent of width
             boxShadow: '0 ' + (5 + planetStyles.horizonShine) + 'px\n                      10px rgb(255, 221, 56),\n                      0 ' + (3 + planetStyles.horizonShine * 0.8) + 'px\n                      5px white'
           } }),
         _react2.default.createElement('div', { style: {
             position: 'absolute',
             background: 'rgb(35, 35, 35)',
             width: planetStyles.planetShadowWidth,
-            height: '27vw',
+            height: 27 + scrolled / 10 + 'vw',
             borderRadius: '50%',
             marginTop: planetStyles.planetShadowHeight,
             boxShadow: planetStyles.planetShadowSpread
@@ -771,10 +775,10 @@ exports.default = function (_ref) {
   return _react2.default.createElement('div', { style: {
       position: 'absolute',
       backgroundColor: 'rgb(255, 234, 193)',
-      width: '7vw',
-      height: '7vw',
+      width: '6vw',
+      height: '6vw',
       borderRadius: '50%',
-      marginTop: 93 - scrolled * 2.4 + 'vh',
+      marginTop: 93 - scrolled * 2.1 + 'vh',
       boxShadow: '0 0 80px goldenrod,\n                  0 0 20px goldenrod,\n                  0 0 60px rgb(255, 144, 0)'
     } });
 };
