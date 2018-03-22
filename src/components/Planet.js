@@ -5,13 +5,12 @@ export default class Planet extends Component {
   constructor(props) {
     super(props)
 
-    this.planetShine = this.planetShine.bind(this)
+    this.horizonShine = this.horizonShine.bind(this)
     this.planetShadowSpread = this.planetShadowSpread.bind(this)
-    this.planetShadowHeight = this.planetShadowHeight.bind(this)
-    this.planetShadowWidth = this.planetShadowWidth.bind(this)
+    this.planetStyleProperties = this.planetStyleProperties.bind(this)
   }
 
-  planetShine() {
+  horizonShine() {
     const { scrolled } = this.props
     if(scrolled > 7) return 0
     return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2
@@ -25,19 +24,20 @@ export default class Planet extends Component {
             rgb(35, 35, 35)`
   }
 
-  planetShadowHeight() {
+  planetStyleProperties() {
     const { scrolled } = this.props
-    return `${92 - (scrolled / 2)}%`
-  }
-
-  planetShadowWidth() {
-    const { scrolled } = this.props
-    return `${30 + scrolled/10}vw`
+    return {
+      horizonShine: this.horizonShine(),
+      planetShadowSpread: this.planetShadowSpread(),
+      planetShadowHeight: `${92 - (scrolled / 2)}%`,
+      planetShadowWidth: `${30 + scrolled/8}vw`
+    }
   }
 
   render() {
+    const planetStyles = this.planetStyleProperties()
     const { scrolled } = this.props
-    const planetShine = this.planetShine()
+
     console.log(scrolled)
 
     return(
@@ -47,17 +47,19 @@ export default class Planet extends Component {
           width: '30vw',
           height: '30vw',
           borderRadius: '50%',
-          boxShadow: `0 ${5 + planetShine}px 10px rgb(255, 221, 56),
-                      0 ${3 + planetShine * 0.8}px 5px white`
+          boxShadow: `0 ${5 + planetStyles.horizonShine}px
+                      10px rgb(255, 221, 56),
+                      0 ${3 + planetStyles.horizonShine * 0.8}px
+                      5px white`
         }}></div>
         <div style={{
           position: 'relative',
           background: `rgb(35, 35, 35)`,
-          width: this.planetShadowWidth(),
+          width: planetStyles.planetShadowWidth,
           height: '27vw',
           borderRadius: '50%',
-          bottom: this.planetShadowHeight(),
-          boxShadow: this.planetShadowSpread()
+          bottom: planetStyles.planetShadowHeight,
+          boxShadow: planetStyles.planetShadowSpread
         }}></div>
       </div>
     )
