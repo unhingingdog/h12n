@@ -6,7 +6,7 @@ export default class Planet extends Component {
     super(props)
 
     this.horizonShine = this.horizonShine.bind(this)
-    this.planetShadowSpread = this.planetShadowSpread.bind(this)
+    this.shadowSpread = this.shadowSpread.bind(this)
     this.planetStyleProperties = this.planetStyleProperties.bind(this)
     this.planetSize = this.planetSize.bind(this)
   }
@@ -17,7 +17,7 @@ export default class Planet extends Component {
     return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2
   }
 
-  planetShadowSpread() {
+  shadowSpread() {
     //pass down width pixels
     //switch pixels to percent of pixels width
     const { scrolled } = this.props
@@ -44,9 +44,12 @@ export default class Planet extends Component {
       horizonShine: this.horizonShine(),
       horizonShineBlue: 'rgb(122, 201, 255)',
       horizonShineGold: 'rgb(255, 221, 56)',
-      planetShadowSpread: this.planetShadowSpread(),
-      planetShadowHeight: `${2 + 1 * (scrolled / 2.5)}vh`, //`${3 + 1 * (scrolled / 2.5}vh`
-      planetShadowWidth: `${30 + scrolled / 2}vw`,
+      planetOverlayColor: 'rgba(109, 145, 145, 0.65)',
+      shadowColor: 'rgb(35, 35, 35)',
+      shadowSpread: this.shadowSpread(),
+      shadowTop: `${2 + 1 * (scrolled / 2.5)}vh`, //`${3 + 1 * (scrolled / 2.5}vh`
+      shadowWidth: `${30 + scrolled / 2}vw`,
+      shadowHeight: `${27 + scrolled/10}vw`,
       planetSize: this.planetSize()
     }
   }
@@ -57,9 +60,12 @@ export default class Planet extends Component {
       horizonShineBlue,
       horizonShineGold,
       horizonShineColours,
-      planetShadowSpread,
-      planetShadowHeight,
-      planetShadowWidth,
+      planetOverlayColor,
+      shadowColor,
+      shadowSpread,
+      shadowTop,
+      shadowWidth,
+      shadowHeight,
       planetSize
     } = this.planetStyleProperties()
 
@@ -79,7 +85,7 @@ export default class Planet extends Component {
         zIndex: 1
       }}>
         <div style={{
-          background: 'rgba(109, 145, 145, 0.65)',
+          background: planetOverlayColor,
           width: planetSize,
           height: planetSize,
           borderRadius: '50%',
@@ -89,12 +95,12 @@ export default class Planet extends Component {
         }}></div>
         <div style={{
           position: 'absolute',
-          background: 'rgb(35, 35, 35)',
-          width: planetShadowWidth,
-          height: `${27 + scrolled/10}vw`,
+          background: shadowColor,
+          width: shadowWidth,
+          height: shadowHeight,
           borderRadius: '50%',
-          marginTop: planetShadowHeight,
-          boxShadow: planetShadowSpread
+          marginTop: shadowTop,
+          boxShadow: shadowSpread
         }}></div>
       </div>
     )
