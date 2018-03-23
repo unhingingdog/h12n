@@ -16,6 +16,12 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].js'
   },
+  watch:true,
+  resolve: { extensions: [".js", ".ts"] },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 9000
+  },
   module: {
     rules: [
       {
