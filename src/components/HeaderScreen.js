@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../assets/HeaderScreen.css'
 import Planet from './Planet'
 import Sun from './Sun'
+import Title from './Title'
 
 export default class HeaderScreen extends Component {
   render() {
@@ -12,6 +13,7 @@ export default class HeaderScreen extends Component {
         <div className="background">
           <Planet scrolled={scrolled}/>
           <Sun scrolled={scrolled}/>
+          <Title scrolled={scrolled}/>
         </div>
       </div>
     )
