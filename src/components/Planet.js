@@ -13,8 +13,12 @@ export default class Planet extends Component {
 
   horizonShine() {
     const { scrolled } = this.props
-    // if(scrolled > 7) return 0
-    return scrolled < 3.5 ? scrolled * -2 : (3.5 - (scrolled - 3.5)) * -2
+    const peakShine = 3.5
+    const shineReduceStop = 5
+
+    if (scrolled > shineReduceStop) return -4
+    return scrolled < peakShine ?
+      scrolled * -2 : (peakShine - (scrolled - peakShine)) * -2
   }
 
   shadowSpread() {
@@ -71,6 +75,7 @@ export default class Planet extends Component {
 
     const { scrolled } = this.props
     console.log(scrolled)
+    console.log('horizonshine: ', horizonShine)
 
     return(
       <div style={{
