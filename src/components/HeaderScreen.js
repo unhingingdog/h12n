@@ -6,14 +6,14 @@ import Title from './Title'
 
 export default class HeaderScreen extends Component {
   render() {
-    console.log(this.props.scrolled)
-    const { scrolled } = this.props
+    const { scrolled, width } = this.props
+
     return(
       <div className="container">
         <div className="background">
-          <Planet scrolled={scrolled}/>
-          <Sun scrolled={scrolled}/>
-          <Title scrolled={scrolled}/>
+          <Planet scrolled={scrolled} width={width}/>
+          <Sun scrolled={scrolled} width={width}/>
+          <Title scrolled={scrolled} width={width}/>
         </div>
       </div>
     )

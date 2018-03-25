@@ -1,14 +1,13 @@
 import React from 'react'
+import style from '../assets/style.css'
 
 export default ({ scrolled }) => {
-  return(
-    <h1 style={style}>Hamish Gilkison</h1>
-  )
-}
+  const visibility = scrolled > 7 ? 'visible' : 'hidden'
+  const position = scrolled > 15 ? 'fixed' : 'absolute'
 
-const style = {
-  position: 'absolute',
-  color: 'rgba(255, 255, 255, 0)',
-  paddingTop: '105vh',
-  zIndex: 2
+  return(
+    <h1 id="title" style={{ visibility, position }}>
+      HAMISH GILKISON
+    </h1>
+  )
 }

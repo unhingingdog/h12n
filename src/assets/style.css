@@ -1,4 +1,33 @@
-.shit {
-  color: red;
-  font-size: 10px;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+@keyframes fadeIn {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+}
+
+@-webkit-keyframes fadeIn {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+}
+
+#title {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  font-weight: 100;
+  font-size: 80px;
+  position: absolute;
+  padding-top: 100vh;
+  z-index: 2;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+}
+
+@-webkit-keyframes fadeIn {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
 }
