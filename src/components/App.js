@@ -35,6 +35,8 @@ class App extends Component {
     window.addEventListener('resize', this.windowDimensionsChange)
   }
 
+  // possibly add shouldcomponetupdate to increase size of call quantum
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
     window.removeEventListener('resize', this.windowDimensionsChange)

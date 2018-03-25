@@ -11,7 +11,7 @@ export default class HeaderScreen extends Component {
     return(
       <div className="container">
         <div className="background">
-          <Planet scrolled={scrolled} width={width}/>
+          <Planet scrolled={scrolled} width={width} />
           <Sun scrolled={scrolled} width={width}/>
           <Title scrolled={scrolled} width={width}/>
         </div>
