@@ -5,8 +5,8 @@ export default ({ scrolled }) => {
     <div style={{
       position: 'absolute',
       backgroundImage: 'radial-gradient(rgb(255, 246, 229), 85%, rgb(255, 214, 112))',
-      width: '5vw',
-      height: '5vw',
+      width: '5.7vw',
+      height: '5.7vw',
       borderRadius: '50%',
       marginTop: `${93 - (scrolled * 2.1)}vh`,
       boxShadow: `0 0 80px goldenrod,

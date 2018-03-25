@@ -25,9 +25,12 @@ export default class Planet extends Component {
     //pass down width pixels
     //switch pixels to percent of pixels width
     const { scrolled } = this.props
+    const stopSpread = 4
+    const blurRadius = scrolled < stopSpread ?
+      20 + (scrolled / 3) : 20 + (stopSpread / 3)
 
     return `0px -5px
-            ${20 + scrolled/3}px
+            ${blurRadius}px
             ${10 + scrolled/5}px
             rgb(35, 35, 35)`
   }
@@ -37,6 +40,7 @@ export default class Planet extends Component {
 
     const startZoom = 100
     const acceleration = 1 * ((scrolled * 3) - (startZoom * 3))
+    const thirdOfScreen = width / 3
 
     return scrolled < startZoom ? 30 : 30 + acceleration
   }
@@ -50,7 +54,7 @@ export default class Planet extends Component {
       planetOverlayColor: 'rgba(109, 145, 145, 0.65)',
       shadowColor: 'rgb(35, 35, 35)',
       shadowSpread: this.shadowSpread(),
-      shadowTop: `${2 + 1 * (scrolled / 2.5)}vh`,
+      shadowTop: `${2 + (scrolled / 2.5)}vh`,
       planetSize: this.planetSize()
     }
   }
@@ -95,7 +99,7 @@ export default class Planet extends Component {
         <div style={{
           position: 'absolute',
           background: shadowColor,
-          width: `${planetSize + scrolled / 2}vw`,
+          width: `${planetSize + scrolled / 3}vw`,
           height: `${planetSize - 3}vw`,
           borderRadius: '50%',
           marginTop: shadowTop,
