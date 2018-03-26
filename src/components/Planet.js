@@ -45,13 +45,13 @@ export default class Planet extends Component {
   }
 
   planetSize() {
-    const { scrolled, width } = this.props
+    const { scrolled, width, isPortrait } = this.props
 
     const startZoom = 100
     const acceleration = 1 * ((scrolled * 3) - (startZoom * 3))
-    const desktopSize = width / 3
-    const mobileSize = width * 0.6
-    const screenMode = desktopSize
+    const landscapeMode = width / 3
+    const portraitMode = width * 0.6
+    const screenMode = isPortrait ? portraitMode : landscapeMode
 
     return scrolled < startZoom ? screenMode : screenMode + acceleration
   }

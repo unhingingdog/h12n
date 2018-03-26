@@ -43,12 +43,16 @@ class App extends Component {
   }
 
   render() {
+    const { screenWidth, screenHeight, percentScrolled } = this.state
+    const isPortrait = screenWidth < screenHeight
+
     return (
       <div>
         <HeaderScreen
-          scrolled={this.state.percentScrolled}
-          width={this.state.screenWidth}
-          screenHeight={this.state.screenHeight}
+          scrolled={percentScrolled}
+          width={screenWidth}
+          screenHeight={screenHeight}
+          isPortrait={isPortrait}
         />
       </div>
     )
