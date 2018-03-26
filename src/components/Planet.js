@@ -23,12 +23,14 @@ export default class Planet extends Component {
   }
 
   shadowSpread() {
-    //pass down width pixels
-    //switch pixels to percent of pixels width
-    const { scrolled } = this.props
+    const { scrolled, width } = this.props
     const stopSpread = 4
-    const blurRadius = scrolled < stopSpread ?
-      20 + (scrolled / 3) : 20 + (stopSpread / 3)
+    // const blurRadius = scrolled < stopSpread ?
+    //   20 + (scrolled / 3) : 20 + (stopSpread / 3)
+    const standardScreenWidth = 1034
+    // const blurRadius = (20 + (scrolled / 3) / standardScreenWidth) * width
+    const blurRadius = ((15 + (scrolled / 5)) / standardScreenWidth) * width
+
 
     return `0px -5px
             ${blurRadius}px
@@ -115,7 +117,7 @@ export default class Planet extends Component {
           position: 'absolute',
           background: shadowColor,
           width: `${(planetSize + 10) + (scrolled * 2)}px`,
-          height: `${planetSize}px`, //make smaller to get bottom atmospere effect
+          height: `${planetSize}px`,
           borderRadius: '50%',
           marginTop: `${crescentHeight}px`,
           boxShadow: shadowSpread
