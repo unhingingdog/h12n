@@ -24,13 +24,8 @@ export default class Planet extends Component {
 
   shadowSpread() {
     const { scrolled, width } = this.props
-    const stopSpread = 4
-    // const blurRadius = scrolled < stopSpread ?
-    //   20 + (scrolled / 3) : 20 + (stopSpread / 3)
     const standardScreenWidth = 1034
-    // const blurRadius = (20 + (scrolled / 3) / standardScreenWidth) * width
     const blurRadius = ((15 + (scrolled / 5)) / standardScreenWidth) * width
-
 
     return `0px -5px
             ${blurRadius}px
@@ -41,7 +36,7 @@ export default class Planet extends Component {
   crescentHeight() {
     const { scrolled, width } = this.props
     const standardScreenWidth = 1034
-    const maximumHeight = 40
+    const maximumHeight = 45
     const screenWeightedHeight = 20 +
       ((scrolled * 1.95) / standardScreenWidth) * width
 
@@ -90,8 +85,6 @@ export default class Planet extends Component {
 
     const { scrolled, width } = this.props
 
-    console.log(scrolled, crescentHeight)
-
     return(
       <div style={{
         display: 'flex',
@@ -116,7 +109,7 @@ export default class Planet extends Component {
         <div style={{
           position: 'absolute',
           background: shadowColor,
-          width: `${(planetSize + 10) + (scrolled * 2)}px`,
+          width: `${(planetSize + 10) + (scrolled * 1.8)}px`,
           height: `${planetSize}px`,
           borderRadius: '50%',
           marginTop: `${crescentHeight}px`,

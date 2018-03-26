@@ -48,6 +48,7 @@ class App extends Component {
         <HeaderScreen
           scrolled={this.state.percentScrolled}
           width={this.state.screenWidth}
+          screenHeight={this.state.screenHeight}
         />
       </div>
     )
