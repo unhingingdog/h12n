@@ -13,9 +13,23 @@ export default class Planet extends Component {
     this.crescentHeight = this.crescentHeight.bind(this)
     this.planetStyleProperties = this.planetStyleProperties.bind(this)
     this.planetSize = this.planetSize.bind(this)
+    this.planetSizeWeighted = this.planetSizeWeighted.bind(this)
+  }
+
+  planetSize() {
+    const { width, isPortrait } = this.props
+    return isPortrait ? width * 0.6 : width * 0.33
+  }
+
+  planetSizeWeighted(value) {
+    const maxPlanetWidth = 1036 * 0.6
+
+    return (value / maxPlanetWidth) * this.planetSize()
   }
 
   horizonShine() {
+    //planetWeight
+
     const { scrolled } = this.props
     const peakShine = 5.8 //scroll point at which blur-radius starts decreasing
     const deltaFloor = 8  //scroll point at which blur-radius stops decreasing
@@ -29,9 +43,9 @@ export default class Planet extends Component {
 
   crescentHeight() {
     const { scrolled, width, isPortrait } = this.props
-    const standardScreenWidth = 1034
+    const dynamicHeight = this.planetSizeWeighted(20 + (scrolled * 1.95))
     const maximumHeight = 45
-
+    //fix this shit
     const weightedByScreenOrientationMode = isPortrait ?
       scrolled * 4 : scrolled * 1.95
 
@@ -40,18 +54,6 @@ export default class Planet extends Component {
 
     return screenWidthWeightedHeight > maximumHeight ?
       maximumHeight : screenWidthWeightedHeight
-  }
-
-  planetSize() {
-    const { scrolled, width, isPortrait } = this.props
-
-    const startZoom = 100
-    const acceleration = 1 * ((scrolled * 3) - (startZoom * 3))
-    const landscapeMode = width / 3
-    const portraitMode = width * 0.6
-    const screenMode = isPortrait ? portraitMode : landscapeMode
-
-    return scrolled < startZoom ? screenMode : screenMode + acceleration
   }
 
   shadowSpread() {
@@ -92,6 +94,7 @@ export default class Planet extends Component {
   }
 
   render() {
+
     const {
       horizonShine,
       horizonShineBlue,
