@@ -22,14 +22,13 @@ export default class Planet extends Component {
   }
 
   planetSizeWeighted(value) {
-    const maxPlanetWidth = 1036 * 0.6
+    const MAX_SCREEN_WIDTH = 1036
+    const maxPlanetWidth = MAX_SCREEN_WIDTH * 0.6
 
     return (value / maxPlanetWidth) * this.planetSize()
   }
 
   horizonShine() {
-    //planetWeight
-
     const { scrolled } = this.props
     const peakShine = 5.8 //scroll point at which blur-radius starts decreasing
     const deltaFloor = 8  //scroll point at which blur-radius stops decreasing
@@ -42,40 +41,24 @@ export default class Planet extends Component {
   }
 
   crescentHeight() {
-    const { scrolled, width, isPortrait } = this.props
-    const dynamicHeight = this.planetSizeWeighted(20 + (scrolled * 1.95))
-    const maximumHeight = 45
-    //fix this shit
-    const weightedByScreenOrientationMode = isPortrait ?
-      scrolled * 4 : scrolled * 1.95
+    const { scrolled, isPortrait } = this.props
 
-    const screenWidthWeightedHeight = 20 +
-      (weightedByScreenOrientationMode / standardScreenWidth) * width
-
-    return screenWidthWeightedHeight > maximumHeight ?
-      maximumHeight : screenWidthWeightedHeight
+    return isPortrait ?
+      this.planetSizeWeighted(30 + (scrolled * 2)) :
+      this.planetSizeWeighted(30 + (scrolled * 4))
   }
 
   shadowSpread() {
-    const { scrolled, width, isPortrait } = this.props
-    const standardScreenWidth = 1034
-    const blurRadius = ((15 + (scrolled / 5)) / standardScreenWidth) * width
+    const { scrolled, isPortrait } = this.props
 
-    return `0px -5px
-            ${blurRadius}px
-            ${10 + scrolled/5}px
-            rgb(35, 35, 35)`
+    return isPortrait ?
+      this.planetSizeWeighted(15 + (scrolled * 0.3)) :
+      this.planetSizeWeighted(10 + (scrolled * 1.2))
   }
 
-  //possibly remove
   shadowWidth() {
-    const { scrolled, isPortrait } = this.props
-    const planetSize = this.planetSize()
-
-    const width = isPortrait ?
-      planetSize : planetSize + (scrolled * 1.5)
-
-    return `${width}px`
+    const { scrolled } = this.props
+    return `${this.planetSize() + this.planetSizeWeighted(scrolled * 3)}px`
   }
 
   planetStyleProperties() {
@@ -83,7 +66,6 @@ export default class Planet extends Component {
     return {
       horizonShine: this.horizonShine(),
       horizonShineBlue: 'rgb(122, 201, 255)',
-      horizonShineGold: 'rgb(255, 221, 56)',
       planetOverlayColor: 'rgba(109, 145, 145, 0.65)',
       shadowColor: 'rgb(35, 35, 35)',
       shadowSpread: this.shadowSpread(),
@@ -98,7 +80,6 @@ export default class Planet extends Component {
     const {
       horizonShine,
       horizonShineBlue,
-      horizonShineGold,
       horizonShineColours,
       planetOverlayColor,
       shadowColor,
@@ -111,7 +92,7 @@ export default class Planet extends Component {
     const { scrolled, width } = this.props
 
     return(
-      <div style={{
+      <div id="planet-outer" style={{
         display: 'flex',
         justifyContent: 'center',
         backgroundImage: `url(${earth})`,
@@ -122,23 +103,27 @@ export default class Planet extends Component {
         marginTop: '85vh',
         zIndex: 1
       }}>
-        <div style={{
+        <div id="planet-inner" style={{
           background: planetOverlayColor,
           width: `${planetSize}px`,
           height: `${planetSize}px`,
           borderRadius: '50%',
-          //switch pixels to percent of width
           boxShadow: `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
                       0 ${3 + horizonShine * 0.8}px 5px white`
         }}></div>
-        <div style={{
+        <div id="planet-shadow" style={{
           position: 'absolute',
           background: shadowColor,
           width: shadowWidth,
           height: `${planetSize}px`,
           borderRadius: '50%',
           marginTop: `${crescentHeight}px`,
-          boxShadow: shadowSpread
+          boxShadow:        `0px -5px ${shadowSpread * 1.2}px
+                            ${shadowSpread}px rgb(35, 35, 35)`,
+          WebkitBoxShadow:  `0px -5px ${shadowSpread * 1.2}px
+                            ${shadowSpread}px rgb(35, 35, 35)`,
+          MozBoxShadow:     `0px -5px ${shadowSpread * 1.2}px
+                            ${shadowSpread}px rgb(35, 35, 35)`,
         }}></div>
       </div>
     )

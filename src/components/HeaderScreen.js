@@ -14,6 +14,7 @@ export default class HeaderScreen extends Component {
           <Planet
             scrolled={scrolled}
             width={width}
+            screenHeight={screenHeight}
             isPortrait={isPortrait}
           />
           <Sun
