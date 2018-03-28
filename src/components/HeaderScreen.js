@@ -23,7 +23,11 @@ export default class HeaderScreen extends Component {
             screenHeight={screenHeight}
             isPortrait={isPortrait}
           />
-          <Title scrolled={scrolled} width={width}/>
+          <Title
+            scrolled={scrolled}
+            width={width}
+            screenHeight={screenHeight}
+          />
         </div>
       </div>
     )

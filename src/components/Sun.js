@@ -4,7 +4,7 @@ export default ({ scrolled, screenHeight, isPortrait }) => {
   console.log(screenHeight)
 
   //const vertical = 93 - (scrolled * 2.1)
-  const sunRise = screenHeight - scrolled * 15
+  const sunRise = screenHeight - scrolled * 20
   const sunSize = isPortrait ? 9 : 5.7
 
   return(

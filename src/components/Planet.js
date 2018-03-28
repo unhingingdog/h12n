@@ -108,8 +108,12 @@ export default class Planet extends Component {
           width: `${planetSize}px`,
           height: `${planetSize}px`,
           borderRadius: '50%',
-          boxShadow: `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                      0 ${3 + horizonShine * 0.8}px 5px white`
+          boxShadow:       `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
+                            0 ${3 + horizonShine * 0.8}px 5px white`,
+          WebkitBoxShadow: `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
+                            0 ${3 + horizonShine * 0.8}px 5px white`,
+          MozBoxShadow:    `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
+                            0 ${3 + horizonShine * 0.8}px 5px white`
         }}></div>
         <div id="planet-shadow" style={{
           position: 'absolute',
