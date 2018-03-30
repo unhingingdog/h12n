@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../assets/style.css'
-import HeaderScreen from './HeaderScreen'
+import OdysseyScene from './OdysseyScene'
 import Title from './Title'
 import Blurb from './Blurb'
 
@@ -11,11 +11,13 @@ class App extends Component {
     this.state = {
       scrolled: 0.1,
       screenWidth: window.innerWidth,
-      screenHeight: window.innerHeight
+      screenHeight: window.innerHeight,
+      odysseyScenePlayed: false
     }
 
     this.handleScroll = this.handleScroll.bind(this)
     this.windowDimensionsChange = this.windowDimensionsChange.bind(this)
+    this.renderOdysseyScene = this.renderOdysseyScene.bind(this)
   }
 
   handleScroll() {
@@ -42,25 +44,40 @@ class App extends Component {
     window.removeEventListener('resize', this.windowDimensionsChange)
   }
 
+  renderOdysseyScene() {
+    const { screenWidth, screenHeight, scrolled } = this.state
+    const isPortrait = screenWidth < screenHeight
+
+    if (!this.state.odysseyScenePlayed) return (
+      <OdysseyScene
+        scrolled={scrolled}
+        width={screenWidth}
+        screenHeight={screenHeight}
+        isPortrait={isPortrait}
+      />
+    )
+  }
+
   render() {
     const { screenWidth, screenHeight, scrolled } = this.state
     const isPortrait = screenWidth < screenHeight
 
+    if (!this.state.odysseyScenePlayed && window.scrollY > screenHeight + 50) {
+      this.setState({ odysseyScenePlayed: true })
+      console.log('fired')
+    }
+
     return (
       <div className="container">
-        <HeaderScreen
-          scrolled={scrolled}
-          width={screenWidth}
-          screenHeight={screenHeight}
-          isPortrait={isPortrait}
-        />
+        {this.renderOdysseyScene()}
         <Title
           scrolled={scrolled}
           width={screenWidth}
           screenHeight={screenHeight}
           isPortrait={isPortrait}
+          snapToTop={this.state.odysseyScenePlayed}
         />
-        //<Blurb screenHeight={screenHeight} />
+        <Blurb screenHeight={screenHeight} />
       </div>
     )
   }

@@ -5,11 +5,7 @@ import Sun from './Sun'
 import Title from './Title'
 import Blurb from './Blurb'
 
-export default class HeaderScreen extends Component {
-  constructor(props) {
-    super(props)
-  }
-
+export default class OdysseyScene extends Component {
   render() {
     const { scrolled, width, screenHeight, isPortrait } = this.props
 
