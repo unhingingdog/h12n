@@ -58,7 +58,7 @@ export default class Planet extends Component {
 
   shadowWidth() {
     const { scrolled } = this.props
-    return `${this.planetSize() + this.planetSizeWeighted(scrolled * 3)}px`
+    return `${this.planetSize() + this.planetSizeWeighted(scrolled * 2.5)}px`
   }
 
   planetStyleProperties() {
@@ -109,11 +109,11 @@ export default class Planet extends Component {
           height: `${planetSize}px`,
           borderRadius: '50%',
           boxShadow:       `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                            0 ${3 + horizonShine * 0.8}px 5px white`,
+                            0 ${5 + horizonShine}px 5px white`,
           WebkitBoxShadow: `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                            0 ${3 + horizonShine * 0.8}px 5px white`,
+                            0 ${5 + horizonShine}px 5px white`,
           MozBoxShadow:    `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                            0 ${3 + horizonShine * 0.8}px 5px white`
+                            0 ${5 + horizonShine}px 5px white`
         }}></div>
         <div id="planet-shadow" style={{
           position: 'absolute',

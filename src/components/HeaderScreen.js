@@ -27,6 +27,7 @@ export default class HeaderScreen extends Component {
             scrolled={scrolled}
             width={width}
             screenHeight={screenHeight}
+            isPortrait={isPortrait}
           />
         </div>
       </div>

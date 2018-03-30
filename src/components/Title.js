@@ -1,12 +1,13 @@
 import React from 'react'
-import style from '../assets/style.css'
+import style from '../assets/HeaderScreen.css'
 
-export default ({ scrolled }) => {
-  const visibility = scrolled > 7 ? 'visible' : 'hidden'
-  const position = scrolled > 15 ? 'fixed' : 'absolute'
+export default ({ screenHeight, isPortrait }) => {
+  const visibleAt = screenHeight * 0.45
+  const visibility = window.scrollY > visibleAt ? 'visible' : 'hidden'
+  const top = isPortrait ? screenHeight + 30 : screenHeight * 1.15
 
   return(
-    <h1 id="title" style={{ visibility, position }}>
+    <h1 id="title" style={{ visibility, top }}>
       HAMISH GILKISON
     </h1>
   )

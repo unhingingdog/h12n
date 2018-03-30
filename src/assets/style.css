@@ -11,17 +11,6 @@
    100% {opacity: 1;}
 }
 
-#title {
-  font-family: 'Questrial', sans-serif;
-  color: white;
-  font-weight: 80;
-  font-size: 80px;
-  position: absolute;
-  padding-top: 105vh;
-  z-index: 2;
-  animation-name: fadeIn;
-}
-
 @keyframes fadeIn {
    0% {opacity: 0;}
    100% {opacity: 1;}
