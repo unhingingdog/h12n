@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import '../assets/style.css'
 import HeaderScreen from './HeaderScreen'
+import Title from './Title'
+import Blurb from './Blurb'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      percentScrolled: 0.1,
+      scrolled: 0.1,
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight
     }
@@ -17,10 +19,10 @@ class App extends Component {
   }
 
   handleScroll() {
-    const percentScrolled =
+    const scrolled =
       ((window.scrollY / document.body.scrollHeight) * 100).toFixed(1)
 
-    this.setState({ percentScrolled: percentScrolled })
+    this.setState({ scrolled })
   }
 
   windowDimensionsChange() {
@@ -35,25 +37,30 @@ class App extends Component {
     window.addEventListener('resize', this.windowDimensionsChange)
   }
 
-  // possibly add shouldcomponetupdate to increase size of call quantum
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
     window.removeEventListener('resize', this.windowDimensionsChange)
   }
 
   render() {
-    const { screenWidth, screenHeight, percentScrolled } = this.state
+    const { screenWidth, screenHeight, scrolled } = this.state
     const isPortrait = screenWidth < screenHeight
 
     return (
-      <div>
+      <div className="container">
         <HeaderScreen
-          scrolled={percentScrolled}
+          scrolled={scrolled}
           width={screenWidth}
           screenHeight={screenHeight}
           isPortrait={isPortrait}
         />
+        <Title
+          scrolled={scrolled}
+          width={screenWidth}
+          screenHeight={screenHeight}
+          isPortrait={isPortrait}
+        />
+        //<Blurb screenHeight={screenHeight} />
       </div>
     )
   }
