@@ -5,7 +5,7 @@ export default ({ screenHeight, isPortrait, snapToTop }) => {
   const visibleAt = screenHeight * 0.45
 
   const position = snapToTop ? 'fixed' : 'absolute'
-  const top = snapToTop ? 0 : screenHeight + 100
+  const top = snapToTop ? -50 : screenHeight + 100
 
   const style = (window.scrollY < visibleAt) && !snapToTop ?
     {
@@ -22,8 +22,11 @@ export default ({ screenHeight, isPortrait, snapToTop }) => {
     }
 
   return(
-    <h1 id="title" style={style}>
-      HAMISH GILKISON
-    </h1>
+    <div className="title-container">
+      <h1 id="title" style={style}>
+        HAMISH GILKISON
+      </h1>
+      <p className="sub-title">"022 421 7109 || hi@h12n.info"</p>
+    </div>
   )
 }

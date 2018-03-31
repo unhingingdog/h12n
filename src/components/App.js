@@ -62,9 +62,9 @@ class App extends Component {
     const { screenWidth, screenHeight, scrolled } = this.state
     const isPortrait = screenWidth < screenHeight
 
-    if (!this.state.odysseyScenePlayed && window.scrollY > screenHeight + 50) {
+    //bad. fix.
+    if (!this.state.odysseyScenePlayed && window.scrollY > screenHeight + 70) {
       this.setState({ odysseyScenePlayed: true })
-      console.log('fired')
     }
 
     return (
@@ -77,7 +77,10 @@ class App extends Component {
           isPortrait={isPortrait}
           snapToTop={this.state.odysseyScenePlayed}
         />
-        <Blurb screenHeight={screenHeight} />
+        <Blurb
+          screenHeight={screenHeight}
+          odysseyPlayed={this.state.odysseyScenePlayed}
+        />
       </div>
     )
   }

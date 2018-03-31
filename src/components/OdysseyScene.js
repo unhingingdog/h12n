@@ -21,7 +21,7 @@ export default class OdysseyScene extends Component {
           scrolled={scrolled}
           width={width}
           screenHeight={screenHeight}
-            isPortrait={isPortrait}
+          isPortrait={isPortrait}
         />
       </div>
     )
