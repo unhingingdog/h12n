@@ -26,7 +26,7 @@ export default ({ screenHeight, isPortrait, snapToTop }) => {
       <h1 id="title" style={style}>
         HAMISH GILKISON
       </h1>
-      <p className="sub-title">"022 421 7109 || hi@h12n.info"</p>
+      <p className="sub-title">022 421 7109 || hi@h12n.info</p>
     </div>
   )
 }

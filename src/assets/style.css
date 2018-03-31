@@ -33,9 +33,9 @@
   font-weight: 80;
   font-size: 60px;
   z-index: 3;
-  background: rgba(35, 35, 35, 0.8);
+  background: red;
   padding: 40px 0 90px 0;
-  background: linear-gradient(rgba(35, 35, 35, 1) 67%, rgba(35, 35, 35, 0.2) 100%);
+  /* background: linear-gradient(rgba(35, 35, 35, 1) 67%, rgba(35, 35, 35, 0.2) 100%); */
 }
 
 .title-container {
@@ -44,10 +44,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: red;
 }
 
 .sub-title {
   color: white;
+  z-index: 2;
 }
 
 #blurb {
@@ -56,4 +58,10 @@
   font-family: monospace;
   z-index: 2;
   padding: 250px 10% 0 10%;
+}
+
+@media (max-width: 300px) {
+  #blurb {
+    font-size: 1000px;
+  }
 }
