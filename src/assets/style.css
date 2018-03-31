@@ -1,16 +1,17 @@
 
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lobster|Montserrat|Questrial');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Mina');
 
-.html {
-  background: rgb(35, 35, 35);
-  margin: -50px;
+body {
+  margin: 0;
 }
 
 .container {
   display: flex;
   flex: 1;
   background: rgb(35, 35, 35);
-  width: 100%;
+  width: 100vw;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -23,45 +24,48 @@
   align-items: center;
 }
 
-#title {
+.title {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  width: 90%;
+  text-align: center;
   font-family: 'Questrial', sans-serif;
   color: white;
-  font-weight: 80;
-  font-size: 60px;
-  z-index: 3;
-  background: red;
-  padding: 40px 0 90px 0;
-  /* background: linear-gradient(rgba(35, 35, 35, 1) 67%, rgba(35, 35, 35, 0.2) 100%); */
+  z-index: 1;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+  font-size: 50px;
+  background: rgb(35, 35, 35);
 }
 
 .title-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100vw;
   justify-content: center;
-  text-align: center;
-  background: red;
+  flex-direction: row;
 }
 
-.sub-title {
+.body-copy {
+  padding-top: 10vh;
+}
+
+.blurb {
   color: white;
-  z-index: 2;
+  font-size: 27px;
+  font-family: 'Mina', sans-serif;
+  font-weight: lighter;
+  z-index: 0;
+  padding: 0 10% 0 10%;
 }
 
-#blurb {
-  color: white;
-  font-size: 25px;
-  font-family: monospace;
-  z-index: 2;
-  padding: 250px 10% 0 10%;
-}
-
-@media (max-width: 300px) {
-  #blurb {
-    font-size: 1000px;
+@media only screen and (max-width: 600px) {
+  .body-copy {
+    background: coral;
   }
 }
+
+/* @media only screen and (max-width: 600px)  {
+  .blurb {
+    font-size: 40px;
+  }
+} */

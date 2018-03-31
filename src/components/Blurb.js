@@ -1,22 +1,10 @@
 import React from 'react'
 
-export default ({ screenHeight, odysseyPlayed }) => {
-  const visibility = odysseyPlayed ? "visible" : "hidden"
-
-  const style = odysseyPlayed ?
-    {
-      opacity: 1,
-      transition: 'opacity 1200ms',
-    } :
-    {
-      opacity: 0,
-      transition: 'opacity 1200ms',
-    }
-
-    console.log(style)
+export default ({ isPortrait }) => {
+  const fontSize = isPortrait ? '40px' : '27px'
 
   return(
-    <div id="blurb" style={style}>
+    <div className="blurb" style={{ fontSize }}>
       <p>
         Blog gentrify truffaut, activated charcoal helvetica post-ironic
         drinking vinegar YOLO roof party keffiyeh cred DIY woke tilde palo
