@@ -38,7 +38,10 @@ module.exports = {
         use: [
           {
             loader: 'url-loader',
-            options: { limit: 40000 }
+            options: {
+              limit: 40000,
+              name: 'images/[hash]-[name].[ext]' 
+            }
           },
           'image-webpack-loader',
         ]

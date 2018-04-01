@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default ({ isPortrait }) => {
-  const fontSize = isPortrait ? '40px' : '27px'
+export default () => {
 
   return(
-    <div className="blurb" style={{ fontSize }}>
+    <div className="blurb">
       <p>
         Blog gentrify truffaut, activated charcoal helvetica post-ironic
         drinking vinegar YOLO roof party keffiyeh cred DIY woke tilde palo

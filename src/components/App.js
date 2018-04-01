@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../assets/style.css'
 import OdysseyScene from './OdysseyScene'
 import Title from './Title'
-import BodyCopy from './BodyCopy'
+import Body from './Body'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class App extends Component {
     this.handleScroll = this.handleScroll.bind(this)
     this.windowDimensionsChange = this.windowDimensionsChange.bind(this)
     this.renderOdysseyScene = this.renderOdysseyScene.bind(this)
-    this.renderBodyCopy = this.renderBodyCopy.bind(this)
+    this.renderBody = this.renderBody.bind(this)
   }
 
   handleScroll() {
@@ -59,12 +59,14 @@ class App extends Component {
     )
   }
 
-  renderBodyCopy() {
-    if(this.state.odysseyScenePlayed) return(
-      <BodyCopy
-        screenHeight={this.state.screenHeight}
-        appearNow={this.state.odysseyScenePlayed}
-        isPortrait={this.state.isPortrait}
+  renderBody() {
+    const { screenWidth, screenHeight, odysseyScenePlayed } = this.state
+
+    if(odysseyScenePlayed) return(
+      <Body
+        screenHeight={screenHeight}
+        appearNow={odysseyScenePlayed}
+        isPortrait={screenHeight > screenWidth}
       />
     )
   }
@@ -80,6 +82,8 @@ class App extends Component {
     }
 
     return (
+      //turn functions into if statements inside render
+
       <div className="container">
         {this.renderOdysseyScene()}
         <Title
@@ -89,7 +93,7 @@ class App extends Component {
           isPortrait={isPortrait}
           snapToTop={this.state.odysseyScenePlayed}
         />
-        {this.renderBodyCopy()}
+        {this.renderBody()}
       </div>
     )
   }

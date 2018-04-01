@@ -4,7 +4,7 @@ import style from '../assets/style.css'
 export default ({ screenHeight, isPortrait, snapToTop }) => {
   const visibleAt = screenHeight * 0.45
   const position = snapToTop ? 'fixed' : 'absolute'
-  const top = snapToTop ? -34 : screenHeight + 110
+  const top = snapToTop ? -34 : screenHeight + 100
 
   const style = (window.scrollY < visibleAt) && !snapToTop ?
     {
