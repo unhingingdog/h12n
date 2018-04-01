@@ -13,8 +13,7 @@ export default class Body extends Component {
 
     this.state = {
       style: {
-        opacity: 0,
-        transition: 'opacity 5000ms',
+        opacity: 0
       }
     }
   }
@@ -25,7 +24,7 @@ export default class Body extends Component {
         this.setState({
           style: {
             opacity: 1,
-            transition: 'opacity 5000ms',
+            transition: 'opacity 2300ms',
           }
         })
       })
@@ -34,7 +33,7 @@ export default class Body extends Component {
 
   render() {
     return(
-      <div className="body-copy">
+      <div className="body-copy" style={this.state.style}>
         <Blurb isPortrait={this.props.isPortrait} />
         <BodyCard
           title="Zipf"
