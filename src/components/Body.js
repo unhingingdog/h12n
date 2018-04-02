@@ -5,6 +5,8 @@ import reactIcon from '../assets/images/react.png'
 import reduxIcon from '../assets/images/redux.png'
 import jestIcon from '../assets/images/jest.png'
 import zipfPreview from '../assets/images/zipf-preview.png'
+import githubIcon from '../assets/images/github-icon.png'
+import appStoreIcon from '../assets/images/app-store-icon.png'
 
 
 export default class Body extends Component {
@@ -40,6 +42,7 @@ export default class Body extends Component {
           body="A speed reader"
           preview={zipfPreview}
           techIcons={[reactIcon, reduxIcon, jestIcon]}
+          externalIcons={[githubIcon, appStoreIcon]}
         />
       </div>
     )
