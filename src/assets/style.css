@@ -1,9 +1,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Questrial');
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,400i');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100i,200,200i,300,300i,400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,700,700i|IBM+Plex+Serif:400,400i');
 
 body {
   margin: 0;
+}
+
+hr {
+  width: 80%;
 }
 
 .container {
@@ -17,11 +21,15 @@ body {
   height: 4000px;
 }
 
+/* opening scene  */
+
 .odyssey-scene-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/* title */
 
 .title {
   display: flex;
@@ -44,52 +52,78 @@ body {
   flex-direction: row;
 }
 
+/* body  */
+
 .body-copy {
   display: grid;
-  padding-top: 25vh;
+  padding-top: 200px;
+}
+
+.section-title {
+  height: 20px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  flex: 1;
+  /* padding: 10px 0 10px 3%; */
+  /* background-image: url(./images/header.jpg); */
+  /* background-color: rgb(224, 155, 17); */
+  /* background-image: url(./images/desert-stars.jpg);
+  background-size: cover; */
+  justify-content: flex-start;
+  line-height: 0;
+  text-shadow: 0 0 5px rgb(35, 35, 35);
 }
 
 .blurb {
   color: white;
-  font-size: 27px;
+  font-size: 14px;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: lighter;
-  padding: 0 10% 0 10%;
-  background: rgb(35, 35, 35);
+  padding: 50px 5% 50px 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* background-size: cover;
+  background-position: center; */
 }
 
 .body-card {
-  padding: 0 10% 0 10%;
+  padding: 50px 10% 50px 10%;
+  font-family: 'IBM Plex Sans', sans-serif;
   color: white;
   display: grid;
-  grid-template-columns: 300px 1fr 1fr;
+  grid-template-columns: minmax(150px, 250px) 1fr 1fr;
   grid-auto-rows: minmax(100px, auto);
   grid-template-areas:
     "preview title external-icons "
     "preview body body"
     "preview tech-icons .";
-
   align-items: center;
 }
 
 .card-title {
   grid-area: title;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .card-body {
   grid-area: body;
-  align-self: flex-start;
+  font-size: 14px;
 }
 
 .preview {
   grid-area: preview;
-  max-width: 300px;
-  height: auto;
-
+  width: 100%;
+  transform: translateX(-1000px);
+  transition: transform 400ms ease-in;
 }
 
 .tech-icons {
   grid-area: tech-icons;
+  display: flex;
+  align-items: center;
 }
 
 .tech-icon {
@@ -101,6 +135,7 @@ body {
   grid-area: external-icons;
   display: flex;
   align-content: center;
+  justify-self: end;
 
 }
 
@@ -110,29 +145,90 @@ body {
   padding: 5px;
 }
 
+.education {
+  padding: 50px 10% 50px 10%;
+  color: white;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-
-
-
-
-
+/* mobile device */
 
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 30px;
+    padding-top: 25px;
+    padding-bottom: 15px;
   }
 
   .blurb {
-    font-size: 20px;
+    font-size: 14px;
+    padding-bottom: 20px;
   }
 
   .preview {
     max-width: 200px;
   }
-}
 
-/* @media only screen and (max-width: 600px)  {
-  .blurb {
-    font-size: 40px;
+  .body-card {
+    padding: 20px 10% 20px 10%;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
   }
-} */
+
+  .body-card-item {
+    padding-top: 10px;
+  }
+
+  .card-title {
+    grid-area: title;
+    /* font-size: 18px;
+    font-weight: bold; */
+  }
+
+  .card-body {
+    grid-area: body;
+    font-size: 14px;
+    padding-top: 20px;
+  }
+
+  .preview {
+    grid-area: preview;
+    width: 100%;
+  }
+
+  .tech-icons {
+    grid-area: tech-icons;
+    padding-top: 15px;
+  }
+
+  .tech-icon {
+    width: 50px;
+    height: auto;
+  }
+
+  .external-icons {
+    grid-area: external-icons;
+    display: flex;
+    align-content: center;
+    justify-self: end;
+
+  }
+
+  .external-icon {
+    height: 50px;
+    width: auto;
+    padding: 5px;
+  }
+
+  .education {
+    font-size: 17px;
+    padding: 20px 10% 20px 10%;
+  }
+}
