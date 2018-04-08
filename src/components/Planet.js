@@ -44,21 +44,22 @@ export default class Planet extends Component {
     const { scrolled, isPortrait } = this.props
 
     return isPortrait ?
-      this.planetSizeWeighted(30 + (scrolled * 2)) :
-      this.planetSizeWeighted(30 + (scrolled * 4))
+    this.planetSizeWeighted(30 + (scrolled * 5)) :
+    this.planetSizeWeighted(30 + (scrolled * 4))
   }
 
   shadowSpread() {
     const { scrolled, isPortrait } = this.props
 
-    return isPortrait ?
-      this.planetSizeWeighted(15 + (scrolled * 0.3)) :
-      this.planetSizeWeighted(10 + (scrolled * 1.2))
+    return this.planetSizeWeighted(10 + (scrolled * 1.2))
   }
 
   shadowWidth() {
-    const { scrolled } = this.props
-    return `${this.planetSize() + this.planetSizeWeighted(scrolled * 2.5)}px`
+    const { scrolled, isPortrait } = this.props
+
+    return isPortrait ?
+    `${this.planetSize() + this.planetSizeWeighted(scrolled * 7)}px` :
+    `${this.planetSize() + this.planetSizeWeighted(scrolled * 2.5)}px`
   }
 
   planetStyleProperties() {
