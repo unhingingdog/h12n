@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Blurb from './Blurb'
+import Header from './Header'
 import Footer from './Footer'
 import BodyCard from './BodyCard'
 import SectionTitle from './SectionTitle'
@@ -14,6 +14,7 @@ import appStoreIcon from '../assets/images/app-store-icon.png'
 import cssIcon from '../assets/images/css-logo.png'
 import jsIcon from '../assets/images/js-logo.png'
 import webpackIcon from '../assets/images/webpack-logo.png'
+import photoshopIcon from '../assets/images/photoshop-logo.png'
 
 
 export default class Body extends Component {
@@ -43,8 +44,7 @@ export default class Body extends Component {
   render() {
     return(
       <div className="body" style={this.state.style}>
-        <Blurb />
-
+        <Header />
         <BodyCard
           appearAt={200}
           title="Zipf"
@@ -68,7 +68,7 @@ export default class Body extends Component {
           appearAt={700}
           title="h12n.nz"
           preview={h12nScreenshot}
-          techIcons={[reactIcon, cssIcon, webpackIcon]}
+          techIcons={[reactIcon, cssIcon, webpackIcon, photoshopIcon]}
           externalIcons={[
             { image: githubIcon, link: 'https://github.com/unhingingdog/h12n' }
           ]}
@@ -81,7 +81,6 @@ export default class Body extends Component {
           cardigan. Photo booth letterpress bespoke, plaid ugh umami
           subway tile scenester disrupt pickled man bun.
         </BodyCard>
-
         <Footer />
       </div>
     )

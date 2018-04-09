@@ -3,7 +3,6 @@ import '../assets/style.css'
 import Planet from './Planet'
 import Sun from './Sun'
 import Title from './Title'
-import Blurb from './Blurb'
 
 export default class OdysseyScene extends Component {
   render() {

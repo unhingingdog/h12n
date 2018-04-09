@@ -19,15 +19,18 @@ export default ({ title, children, techIcons, preview, externalIcons, appearAt }
         }
       </div>
       <div className="card-body body-card-item">{children}</div>
-      <div className="tech-icons body-card-item">
-        { techIcons.map((icon, key) =>
-            <img
-              src={icon}
-              className="tech-icon"
-              key={key}
-            />
-          )
-        }
+      <div className="tech-icon-container">
+        <p className="tech-icon-label">Significant use of</p>
+        <div className="tech-icons body-card-item">
+          { techIcons.map((icon, key) =>
+              <img
+                src={icon}
+                className="tech-icon"
+                key={key}
+              />
+            )
+          }
+        </div>
       </div>
     </div>
   )
