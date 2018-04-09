@@ -1,11 +1,9 @@
 import React from 'react'
 
 export default () => {
-
   return(
     <div>
-    <div className="header-image"></div>
-      <div className="blurb">
+      <div className="footer-text">
         <p>
           Blog gentrify truffaut, activated charcoal helvetica post-ironic
           drinking vinegar YOLO roof party keffiyeh cred DIY woke tilde palo
@@ -15,6 +13,7 @@ export default () => {
           flexitarian af.
         </p>
       </div>
+      <div className="footer-image"></div>
     </div>
   )
 }

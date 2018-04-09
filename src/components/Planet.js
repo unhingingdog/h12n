@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import earth from '../assets/images/earth.gif'
 
-//weight everything to planet width instead of screenwidth?
-
 export default class Planet extends Component {
   constructor(props) {
     super(props)
 
     this.horizonShine = this.horizonShine.bind(this)
-    this.shadowSpread = this.shadowSpread.bind(this)
     this.shadowWidth = this.shadowWidth.bind(this)
     this.crescentHeight = this.crescentHeight.bind(this)
     this.planetStyleProperties = this.planetStyleProperties.bind(this)
@@ -48,12 +45,6 @@ export default class Planet extends Component {
     this.planetSizeWeighted(30 + (scrolled * 4))
   }
 
-  shadowSpread() {
-    const { scrolled, isPortrait } = this.props
-
-    return this.planetSizeWeighted(10 + (scrolled * 1.2))
-  }
-
   shadowWidth() {
     const { scrolled, isPortrait } = this.props
 
@@ -69,7 +60,7 @@ export default class Planet extends Component {
       horizonShineBlue: 'rgb(122, 201, 255)',
       planetOverlayColor: 'rgba(109, 145, 145, 0.65)',
       shadowColor: 'rgb(35, 35, 35)',
-      shadowSpread: this.shadowSpread(),
+      shadowSpread: this.planetSizeWeighted(10 + (scrolled * 1.2)),
       shadowWidth: this.shadowWidth(),
       crescentHeight: this.crescentHeight(),
       planetSize: this.planetSize()

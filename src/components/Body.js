@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Blurb from './Blurb'
+import Footer from './Footer'
 import BodyCard from './BodyCard'
 import SectionTitle from './SectionTitle'
 
@@ -41,10 +42,9 @@ export default class Body extends Component {
 
   render() {
     return(
-      <div className="body-copy" style={this.state.style}>
-        <SectionTitle>ABOUT ME</SectionTitle>
-        <Blurb isPortrait={this.props.isPortrait} />
-        <SectionTitle>PROJECTS</SectionTitle>
+      <div className="body" style={this.state.style}>
+        <Blurb />
+
         <BodyCard
           appearAt={200}
           title="Zipf"
@@ -82,15 +82,8 @@ export default class Body extends Component {
           subway tile scenester disrupt pickled man bun.
         </BodyCard>
 
-        <SectionTitle>CV</SectionTitle>
-        <Blurb />
-        <hr />
-        022 421 7109 hamish@h12n.nz
+        <Footer />
       </div>
     )
   }
 }
-
-// <p>BA - Political Science -  University of Canterbury (NZ)</p>
-// <p>LLB (law degree) - University of Canterbury (NZ)</p>
-// <p>Certificate in Professional Legal Studies - IPLS (NZ)</p>
