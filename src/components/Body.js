@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Header from './Header'
-import Footer from './Footer'
 import BodyCard from './BodyCard'
-import SectionTitle from './SectionTitle'
+
 
 import reactIcon from '../assets/images/react.png'
 import reduxIcon from '../assets/images/redux.png'
@@ -44,7 +42,23 @@ export default class Body extends Component {
   render() {
     return(
       <div className="body" style={this.state.style}>
-        <Header />
+        <div className="body-copy intro-text">
+          <h1>About me.</h1>
+          <p>
+            I'm a Wellington-based, aspiring software developer. I started programming
+            as hobby in late 2015, beginning with Ruby on Rails. Almost a year ago, I started
+            a full-stack Javascript binge which hasn't abated. It's been a self-directed
+            bootcamp of sorts. Recently, I've spent
+            most of my time building stuff with React. I'm into emerging internet
+            technologies, especially "smart contracts", which tie into my legal background.
+            But I'm happiest when learning something new and applying it creatively,
+            however shiny the tech is.
+          </p>
+          <p>
+            Get in touch at <strong>hamish@h12n.nz</strong> or on <strong>+6422 421 7109</strong>.
+          </p>
+        </div>
+
         <BodyCard
           appearAt={200}
           title="Zipf"
@@ -55,15 +69,25 @@ export default class Body extends Component {
             {image: appStoreIcon, link: 'https://itunes.apple.com/us/app/zipf/id1366685837?mt=8&ign-mpt=uo%3D4'}
           ]}
         >
-          Lorem ipsum dolor amet hexagon viral glossier, direct trade
-          XOXO ramps occupy shaman meggings shoreditch synth paleo blue
-          bottle godard. Affogato banh mi hexagon, meggings sriracha
-          bushwick portland kombucha. Chambray four loko sustainable
-          kombucha pop-up chillwave cornhole asymmetrical palo santo
-          cardigan. Photo booth letterpress bespoke, plaid ugh umami
-          subway tile scenester disrupt pickled man bun.
+          <p>
+            Zipf is a speed reading iOS app, built with React Native. The frequency
+            of words in all languages follows a "zipfian" distribution - that is -
+            "the frequency of a word is inversely proportional to its ranking by
+            frequency". The ten most common words in the English language make
+            up 25% of text. The 100 most common words make up 50%. And so on.
+            Zipf assumes that common words contain less information, and weights
+            the display time of each word based on its frequency in the English
+            language.
+          </p>
+          <p>
+            I used Redux in order to manage the relative complexity of the state,
+            as well as Jest and Enzyme for test driven development. This was pretty
+            good crash-course in React Native and Redux. It was also very fun
+            to develop (except for setting up the test environment, which is really
+             quite difficult in React Native at the moment).
+          </p>
         </BodyCard>
-        <hr />
+
         <BodyCard
           appearAt={700}
           title="h12n.nz"
@@ -73,15 +97,30 @@ export default class Body extends Component {
             { image: githubIcon, link: 'https://github.com/unhingingdog/h12n' }
           ]}
         >
-          Lorem ipsum dolor amet hexagon viral glossier, direct trade
-          XOXO ramps occupy shaman meggings shoreditch synth paleo blue
-          bottle godard. Affogato banh mi hexagon, meggings sriracha
-          bushwick portland kombucha. Chambray four loko sustainable
-          kombucha pop-up chillwave cornhole asymmetrical palo santo
-          cardigan. Photo booth letterpress bespoke, plaid ugh umami
-          subway tile scenester disrupt pickled man bun.
+          <p>
+            For some reason I decided I wanted to make a portfolio website featuring
+            the opening scene of 2001: A Space Odyssey. Here it is. This proved to be far more
+            complicated than I thought, and I ended up learning a lot about CSS.
+            I started the project using vanilla Javascript but soon realised that
+            React was the tool for the job.
+          </p>
+          <p>
+            I took the opportunity to learn how to use Webpack also, rather than
+            using create-react-app.
+          </p>
         </BodyCard>
-        <Footer />
+
+        <div className="body-copy background-text">
+          <h1>Background.</h1>
+          <p>
+            I have a BA in Political Science and a law degree (LLB)
+            from the University of Canterbury. I'm fully trained to practise
+            law in New Zealand. I've worked in administrative positions in government,
+            IT, and finance in NZ and the UK. I also have experience in marketing,
+            having worked as a graphic designer and a copywriter, as an employee and
+             a freelancer.
+          </p>
+        </div>
       </div>
     )
   }

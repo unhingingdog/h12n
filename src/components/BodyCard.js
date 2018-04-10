@@ -4,7 +4,7 @@ export default ({ title, children, techIcons, preview, externalIcons, appearAt }
   // const show = window.scrollY > appearAt ? { transform: 'translate(0)' } : {}
   return(
     <div className="body-card body-card-item">
-      <div className="card-title body-card-item">{title}</div>
+      <h1 className="card-title body-card-item">{title}</h1>
       <img className="preview body-card-item" src={preview} />
       <div className="external-icons body-card-item">
         { externalIcons.map((icon, key) =>

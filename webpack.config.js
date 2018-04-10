@@ -40,7 +40,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 40000,
-              name: 'images/[hash]-[name].[ext]' 
+              name: 'images/[hash]-[name].[ext]'
             }
           },
           'image-webpack-loader',
@@ -54,6 +54,9 @@ module.exports = {
     }),
     new htmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 }
