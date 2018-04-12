@@ -40,6 +40,15 @@ export default class App extends Component {
     window.addEventListener('resize', this.windowDimensionsChange)
   }
 
+  componentDidUpdate() {
+    const { screenHeight, odysseyScenePlayed } = this.state
+
+    if (!odysseyScenePlayed && window.scrollY > screenHeight + 70) {
+      window.scrollTo(0,0)
+      this.setState({ odysseyScenePlayed: true })
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
     window.removeEventListener('resize', this.windowDimensionsChange)
@@ -75,15 +84,7 @@ export default class App extends Component {
     const { screenWidth, screenHeight, scrolled } = this.state
     const isPortrait = screenWidth < screenHeight
 
-    //bad. fix.
-    if (!this.state.odysseyScenePlayed && window.scrollY > screenHeight + 70) {
-      window.scrollTo(0,0)
-      this.setState({ odysseyScenePlayed: true })
-    }
-
     return (
-      //turn functions into if statements inside render
-
       <div className="container">
         {this.renderOdysseyScene()}
         <Title

@@ -104,8 +104,7 @@ export default class Planet extends Component {
                             0 ${5 + horizonShine}px 5px white`,
           WebkitBoxShadow: `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
                             0 ${5 + horizonShine}px 5px white`,
-          MozBoxShadow:    `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                            0 ${5 + horizonShine}px 5px white`
+          MozBoxShadow:    `0 ${5 + horizonShine}px 10px ${horizonShineBlue}`
         }}></div>
         <div id="planet-shadow" style={{
           position: 'absolute',
@@ -117,8 +116,9 @@ export default class Planet extends Component {
           boxShadow:        `0px -5px ${shadowSpread * 1.2}px
                             ${shadowSpread}px rgb(35, 35, 35)`,
           WebkitBoxShadow:  `0px -5px ${shadowSpread * 1.2}px
-                            ${shadowSpread}px rgb(35, 35, 35)`,
-          MozBoxShadow:     `0px -5px ${shadowSpread * 1.2}px
+                              ${shadowSpread}px rgb(35, 35, 35),
+                              inset 0px 10px 10px rgb(35, 35, 35)`,
+          MozBoxShadow:     `0px 0px ${shadowSpread * 1.2}px
                             ${shadowSpread}px rgb(35, 35, 35)`,
         }}></div>
       </div>
