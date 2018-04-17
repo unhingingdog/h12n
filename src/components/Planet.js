@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import earth from '../assets/images/earth.gif'
+import earth from '../assets/images/earth.png'
 
 export default class Planet extends Component {
   constructor(props) {
@@ -101,10 +101,11 @@ export default class Planet extends Component {
           height: `${planetSize}px`,
           borderRadius: '50%',
           boxShadow:       `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                            0 ${5 + horizonShine}px 5px white`,
+                            0 ${-0.5}px 5px white`,
           WebkitBoxShadow: `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
-                            0 ${5 + horizonShine}px 5px white`,
-          MozBoxShadow:    `0 ${5 + horizonShine}px 10px ${horizonShineBlue}`
+                            0 ${-0.5}px 5px white`,
+          MozBoxShadow:    `0 ${5 + horizonShine}px 10px ${horizonShineBlue},
+                            0 ${-0.5}px 5px white`
         }}></div>
         <div id="planet-shadow" style={{
           position: 'absolute',
