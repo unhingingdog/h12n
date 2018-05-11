@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import earth from '../assets/images/earth.png'
+import earth from '../assets/images/earthLowResHalf.png'
 
 export default class Planet extends Component {
   constructor(props) {
