@@ -101,7 +101,7 @@ export default class Body extends Component {
         >
           <p>
             Judgment Squid is a decentralised arbitration application. The
-            back-end is built on Ethereum's Rinkeby testnetwork, using the
+            back-end is built on Ethereum's Rinkeby test network, using the
             Solidity programming language. The front-end was made using React
             and Redux, with Semantic UI for the styling.
           </p>
@@ -112,7 +112,9 @@ export default class Body extends Component {
             a good approach - I learned a lot about wiring up Ethereum applications,
             as well as making application architecture decisions.
           </p>
-          <p>I'm not entirely sure why I chose this name.</p>
+          <p>
+            I'm not entirely sure why I chose this name.
+          </p>
         </BodyCard>
 
         <BodyCard
