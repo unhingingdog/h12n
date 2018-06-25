@@ -6,13 +6,16 @@ import reactIcon from '../assets/images/react.png'
 import reduxIcon from '../assets/images/redux.png'
 import jestIcon from '../assets/images/jest.png'
 import zipfPreview from '../assets/images/zipf-preview.png'
+import judgmentSquidPreview from '../assets/images/judgmentSquidPreview.png'
 import h12nScreenshot from '../assets/images/h12n-preview.png'
 import githubIcon from '../assets/images/github-icon.png'
+import browserIcon from '../assets/images/browserIcon.png'
 import appStoreIcon from '../assets/images/app-store-icon.png'
 import cssIcon from '../assets/images/css-logo.png'
 import jsIcon from '../assets/images/js-logo.png'
 import webpackIcon from '../assets/images/webpack-logo.png'
 import photoshopIcon from '../assets/images/photoshop-logo.png'
+import ethIcon from '../assets/images/ethIcon.png'
 
 
 export default class Body extends Component {
@@ -49,10 +52,8 @@ export default class Body extends Component {
             as hobby in late 2015, beginning with Ruby on Rails. Almost a year ago, I started
             a full-stack Javascript binge which hasn't abated. It's been a self-directed
             bootcamp of sorts. Recently, I've spent
-            most of my time building stuff with React. I'm into emerging internet
-            technologies, especially "smart contracts", which tie into my legal background.
-            But I'm happiest when learning something new and applying it creatively,
-            however shiny the tech is.
+            most of my time building stuff with React. I'm happiest when learning
+            something new and applying it creatively, however shiny the tech is.
           </p>
           <p>
             Get in touch at <strong>hamish@h12n.nz</strong> or on <strong>+6422 421 7109</strong>.
@@ -89,6 +90,32 @@ export default class Body extends Component {
         </BodyCard>
 
         <BodyCard
+          appearAt={200}
+          title="Judgment Squid"
+          preview={judgmentSquidPreview}
+          techIcons={[reactIcon, reduxIcon, ethIcon ]}
+          externalIcons={[
+            {image: githubIcon, link:'https://github.com/unhingingdog/Zipf' },
+            {image: browserIcon, link: 'https://github.com/unhingingdog/ResolveEthereumApp'}
+          ]}
+        >
+          <p>
+            Judgment Squid is a decentralised arbitration application. The
+            back-end is built on Ethereum's Rinkeby testnetwork, using the
+            Solidity programming language. The front-end was made using React
+            and Redux, with Semantic UI for the styling.
+          </p>
+          <p>
+            The development experience was a bit rough at times, as I decided
+            against using a framework (mainly for future-proofing reasons).
+            Despite running into several undocumented issues, I think this was
+            a good approach - I learned a lot about wiring up Ethereum applications,
+            as well as making application architecture decisions.
+          </p>
+          <p>I'm not entirely sure why I chose this name.</p>
+        </BodyCard>
+
+        <BodyCard
           appearAt={700}
           title="h12n.nz"
           preview={h12nScreenshot}
@@ -114,11 +141,9 @@ export default class Body extends Component {
           <h1>Background.</h1>
           <p>
             I have a BA in Political Science and a law degree (LLB)
-            from the University of Canterbury. I'm fully trained to practise
-            law in New Zealand. I've worked in administrative positions in government,
-            IT, and finance in NZ and the UK. I also have experience in marketing,
-            having worked as a graphic designer and a copywriter, as an employee and
-             a freelancer.
+            from the University of Canterbury. I have previously worked as a
+            graphic designer and copywriter, as well a variety of
+            administrative positions in IT, finance, and government.
           </p>
         </div>
       </div>
