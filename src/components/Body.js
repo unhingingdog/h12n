@@ -125,7 +125,7 @@ export default class Body extends Component {
           ]}
         >
           <p>
-            For some reason I decided I wanted to make a portfolio website featuring
+            I wanted to make a portfolio website featuring
             the opening scene of 2001: A Space Odyssey. Here it is. This proved to be far more
             complicated than I thought, and I ended up learning a lot about CSS.
             I started the project using vanilla Javascript but soon realised that
