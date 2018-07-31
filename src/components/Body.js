@@ -95,8 +95,8 @@ export default class Body extends Component {
           preview={judgmentSquidPreview}
           techIcons={[reactIcon, reduxIcon, ethIcon ]}
           externalIcons={[
-            {image: githubIcon, link:'https://github.com/unhingingdog/Zipf' },
-            {image: browserIcon, link: 'https://github.com/unhingingdog/ResolveEthereumApp'}
+            {image: githubIcon, link:'https://github.com/unhingingdog/ResolveEthereumApp' },
+            {image: browserIcon, link: 'https://resolve-eth-squid.herokuapp.com/'}
           ]}
         >
           <p>
@@ -144,7 +144,7 @@ export default class Body extends Component {
           <p>
             I have a BA in Political Science and a law degree (LLB)
             from the University of Canterbury. I have previously worked as a
-            graphic designer and copywriter, as well a variety of
+            graphic designer and copywriter, as well in a variety of
             administrative positions in IT, finance, and government.
           </p>
         </div>
