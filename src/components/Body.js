@@ -4,9 +4,11 @@ import BodyCard from './BodyCard'
 
 import reactIcon from '../assets/images/react.png'
 import reduxIcon from '../assets/images/redux.png'
+import nodeIcon from '../assets/images/node-icon.png'
 import jestIcon from '../assets/images/jest.png'
 import zipfPreview from '../assets/images/zipf-preview.png'
 import judgmentSquidPreview from '../assets/images/judgmentSquidPreview.png'
+import GTFOPreview from '../assets/images/GTFOPreview.png'
 import h12nScreenshot from '../assets/images/h12n-preview.png'
 import githubIcon from '../assets/images/github-icon.png'
 import browserIcon from '../assets/images/browserIcon.png'
@@ -49,9 +51,8 @@ export default class Body extends Component {
           <h1>About me.</h1>
           <p>
             I'm a Wellington-based, aspiring software developer. I started programming
-            as hobby in late 2015, beginning with Ruby on Rails. Almost a year ago, I started
-            a full-stack Javascript binge which hasn't abated. It's been a self-directed
-            bootcamp of sorts. Recently, I've spent
+            as hobby in late 2015, beginning with Ruby on Rails. In mid-2017, I started
+            a full-stack Javascript binge which hasn't abated. Recently, I've spent
             most of my time building stuff with React. I'm happiest when learning
             something new and applying it creatively, however shiny the tech is.
           </p>
@@ -86,6 +87,38 @@ export default class Body extends Component {
             good crash-course in React Native and Redux. It was also very fun
             to develop (except for setting up the test environment, which is really
              quite difficult in React Native at the moment).
+          </p>
+        </BodyCard>
+
+        <BodyCard
+          appearAt={200}
+          title="Get the Flight Out"
+          preview={GTFOPreview}
+          techIcons={[reactIcon, reduxIcon, jestIcon, jsIcon, nodeIcon]}
+          externalIcons={[
+            {image: githubIcon, link: 'https://github.com/unhingingdog/GTFO' },
+            {image: browserIcon, link: 'https://gtfo.travel'}
+          ]}
+        >
+          <p>
+            Get the Flight Out is a web app that takes a
+            flight number and tells the user when to leave to the airport. I
+            created an express server to combine flight and navigation data,
+            and wrote the front-end in React and Redux.
+          </p>
+          <p>
+            My approach very much evolved as I learned more about Node and Express,
+            and ran into economic/data limitations. I ended up taking a very
+            functional, modular approach on the back-end, in anticipation of swapping
+            out one or both of the data providers if necessary.
+          </p>
+          <p>
+            I created this with the intention of monetising it from the start.
+            There's still work to do to turn this into a fully featured service
+            (namely, hard-coding airline data), but it currently works for most
+            domestic New Zealand flights.
+
+            If you want to give it a try, JQ291 is a flight from Wellington to Christchurch.
           </p>
         </BodyCard>
 
