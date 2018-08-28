@@ -113,7 +113,7 @@ export default class Body extends Component {
             out one or both of the data providers if necessary.
           </p>
           <p>
-            I created this with the intention of monetising it from the start.
+            I created this with the intention of monetising it, from the start.
             There's still work to do to turn this into a fully featured service
             (namely, hard-coding airline data), but it currently works for most
             domestic New Zealand flights.
