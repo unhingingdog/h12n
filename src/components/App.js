@@ -22,10 +22,12 @@ export default class App extends Component {
   }
 
   handleScroll() {
-    const scrolled =
-      ((window.scrollY / document.body.scrollHeight) * 47).toFixed(1)
-
-    this.setState({ scrolled })
+    requestAnimationFrame(() => {
+      this.setState(() => ({ 
+        scrolled: ((window.scrollY / document.body.scrollHeight) * 47)
+          .toFixed(1)
+      }))
+    })
   }
 
   windowDimensionsChange() {

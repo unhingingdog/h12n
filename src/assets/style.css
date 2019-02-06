@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Questrial');
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100i,200,200i,300,300i,400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,700,700i|IBM+Plex+Serif:400,400i');
 
@@ -21,7 +20,6 @@ hr {
   align-items: center;
   height: 2000px;
 }
-
 
 /* opening scene  */
 
@@ -82,13 +80,17 @@ hr {
   margin: 50px 10% 100px 10%;
 }
 
+.body-link {
+  color: white;
+}
+
 .body-card {
   padding: 50px 10% 50px 10%;
   font-family: 'IBM Plex Sans', sans-serif;
   color: white;
   display: grid;
   grid-template-columns: minmax(150px, 270px) 1fr 1fr;
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: minmax(80px, auto);
   grid-template-areas:
     "preview title external-icons "
     "preview body body"
@@ -99,7 +101,6 @@ hr {
 
 .card-title {
   grid-area: title;
-
 }
 
 .card-body {
@@ -107,10 +108,11 @@ hr {
 }
 
 .preview {
+  justify-self: center;
   grid-area: preview;
-  width: 100%;
-  /* transform: translateX(-1000px); */
-  transition: transform 400ms ease-in;
+  max-height: 300px;
+  max-width: 100%;
+  padding-right: 20px;
 }
 
 .tech-icon-container {
@@ -133,9 +135,19 @@ hr {
   padding-left: 1%;
 }
 
+.tech-icon-label-mobile {
+  display: none;
+}
+
 .tech-icon {
   width: 50px;
+  margin-right: 2px;
   height: auto;
+  transition: transform 0.1s ease-in-out;
+}
+
+.tech-icon:hover {
+  transform: scale(1.1) rotate(2deg);
 }
 
 .external-icons {
@@ -150,6 +162,11 @@ hr {
   height: 50px;
   width: auto;
   padding: 5px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.external-icon:hover {
+  transform: scale(1.1) rotate(2deg);
 }
 
 /* mobile device */
@@ -175,8 +192,12 @@ hr {
 
   .preview {
     max-width: 200px;
+    max-height: 400px;
     padding-top: 0px;
     margin-top: -20px;
+    padding-right: 0px;
+    grid-area: preview;
+    width: 100%;
   }
 
   .body-card {
@@ -200,11 +221,6 @@ hr {
     padding-top: 20px;
   }
 
-  .preview {
-    grid-area: preview;
-    width: 100%;
-  }
-
   .tech-icons {
     grid-area: tech-icons;
     padding-top: 15px;
@@ -214,9 +230,24 @@ hr {
     display: none;
   }
 
+  .tech-icon-label-mobile {
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -1px;
+  }
+
   .tech-icon {
     width: 50px;
-    height: auto;
+    min-height: 50px;
+  }
+
+  .tech-icon-container-mobile {
+    display: 'flex';
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
   }
 
   .external-icons {
@@ -224,7 +255,6 @@ hr {
     display: flex;
     align-content: center;
     justify-self: end;
-
   }
 
   .external-icon {

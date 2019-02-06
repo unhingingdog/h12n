@@ -72,7 +72,6 @@ export default class Planet extends Component {
     const {
       horizonShine,
       horizonShineBlue,
-      horizonShineColours,
       planetOverlayColor,
       shadowColor,
       shadowSpread,
@@ -80,8 +79,6 @@ export default class Planet extends Component {
       crescentHeight,
       planetSize
     } = this.planetStyleProperties()
-
-    const { scrolled, width } = this.props
 
     return(
       <div id="planet-outer" style={{
