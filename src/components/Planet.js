@@ -41,16 +41,16 @@ export default class Planet extends Component {
     const { scrolled, isPortrait } = this.props
 
     return isPortrait ?
-    this.planetSizeWeighted(30 + (scrolled * 5)) :
-    this.planetSizeWeighted(30 + (scrolled * 4))
+      this.planetSizeWeighted(30 + (scrolled * 5)) :
+      this.planetSizeWeighted(30 + (scrolled * 4))
   }
 
   shadowWidth() {
     const { scrolled, isPortrait } = this.props
 
     return isPortrait ?
-    `${this.planetSize() + this.planetSizeWeighted(scrolled * 7)}px` :
-    `${this.planetSize() + this.planetSizeWeighted(scrolled * 2.5)}px`
+      `${this.planetSize() + this.planetSizeWeighted(scrolled * 7)}px` :
+      `${this.planetSize() + this.planetSizeWeighted(scrolled * 2.5)}px`
   }
 
   planetStyleProperties() {
@@ -68,7 +68,6 @@ export default class Planet extends Component {
   }
 
   render() {
-
     const {
       horizonShine,
       horizonShineBlue,
@@ -94,6 +93,7 @@ export default class Planet extends Component {
       }}>
         <div id="planet-inner" style={{
           background: planetOverlayColor,
+          transition: 'boxShadow 0.2 linear',
           width: `${planetSize}px`,
           height: `${planetSize}px`,
           borderRadius: '50%',
@@ -111,6 +111,8 @@ export default class Planet extends Component {
           height: `${planetSize}px`,
           borderRadius: '50%',
           marginTop: `${crescentHeight}px`,
+          transfrom: `translateY(${crescentHeight}px)`,
+          transition: 'boxShadow 0.2 linear',
           boxShadow:        `0px -5px ${shadowSpread * 1.2}px
                             ${shadowSpread}px rgb(35, 35, 35)`,
           WebkitBoxShadow:  `0px -5px ${shadowSpread * 1.2}px

@@ -61,7 +61,7 @@ export default class Body extends Component {
           tech={['react', 'js', 'rxjs', 'three']}
           externalIcons={[
             {image: githubIcon, link: 'https://github.com/unhingingdog/fusion-game' },
-            {image: browserIcon, link: 'http://tokamak.surge.sh'}
+            {image: browserIcon, link: 'http://tokamak.fun'}
           ]}
         >
           <p>
@@ -182,8 +182,9 @@ export default class Body extends Component {
             I decided to recreate the opening sequence of 2001: A Space Odyssey, 
             then turned it into my portfolio. The opening scene is just a series 
             of style recalculations based on the scrollY property. I would later 
-            learn that setting state off scroll events is ill-advised. However, 
-            the performance isn’t bad, so I’ve left it as is.
+            learn that setting state off scroll events is a bit of an anti-pattern. 
+            However, given the number of elements is small, I made some performance 
+            optimisations and stuck with this approach.
           </p>
           <p>
             I took the opportunity to learn how to use Webpack also, rather than

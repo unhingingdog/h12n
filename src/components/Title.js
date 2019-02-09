@@ -1,5 +1,4 @@
 import React from 'react'
-import style from '../assets/style.css'
 
 export default ({ screenHeight, isPortrait, snapToTop }) => {
   const visibleAt = screenHeight * 0.45
@@ -13,12 +12,13 @@ export default ({ screenHeight, isPortrait, snapToTop }) => {
       opacity: 0,
       transition: 'opacity 1200ms',
       position,
+      background: 'transparent'
     } :
     {
       top,
       opacity: 1,
       transition: 'opacity 1200ms',
-      position,
+      position
     }
 
   return(
