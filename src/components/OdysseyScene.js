@@ -9,7 +9,7 @@ export default class OdysseyScene extends Component {
 
     this.state = {
       lastUpdateTime: Date.now(),
-      transitionPeriod: 16.6
+      transitionPeriod: 50
     }
   }
 
@@ -49,14 +49,14 @@ export default class OdysseyScene extends Component {
           width={width}
           screenHeight={screenHeight}
           isPortrait={isPortrait}
-          transitionPeriod={this.state.transitionPeriod * 8}
+          transitionPeriod={this.state.transitionPeriod * 2}
         />
         <Sun
           scrolled={scrolled}
           width={width}
           screenHeight={screenHeight}
           isPortrait={isPortrait}
-          transitionPeriod={this.state.transitionPeriod * 8}
+          transitionPeriod={this.state.transitionPeriod * 2}
         />
       </div>
     )
