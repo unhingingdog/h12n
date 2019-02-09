@@ -6,6 +6,15 @@ import Sun from './Sun'
 export default class OdysseyScene extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      lastUpdateTime: Date.now(),
+      transitionPeriod: 16.6
+    }
+  }
+
+  componentDidUpdate() {
+    this.setState(() => ({ lastUpdateTime: Date.now() }))
   }
 
   shouldComponentUpdate(nextProps) {
@@ -17,12 +26,16 @@ export default class OdysseyScene extends Component {
       scrolled: nextScrolled
     } = nextProps
 
+
     if (
       (width !== width2) || 
       (screenHeight !== screenHeight2) || 
       (isPortrait !== isPortrait2)
     ) return true
 
+    if (Date.now() - this.state.lastUpdateTime < this.state.transitionPeriod) return false
+    
+    // return true
     return Math.abs(scrolled - nextScrolled) > 0.1
   }
 
@@ -36,12 +49,14 @@ export default class OdysseyScene extends Component {
           width={width}
           screenHeight={screenHeight}
           isPortrait={isPortrait}
+          transitionPeriod={this.state.transitionPeriod * 8}
         />
         <Sun
           scrolled={scrolled}
           width={width}
           screenHeight={screenHeight}
           isPortrait={isPortrait}
+          transitionPeriod={this.state.transitionPeriod * 8}
         />
       </div>
     )

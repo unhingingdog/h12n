@@ -6,8 +6,6 @@ export default class Planet extends Component {
     super(props)
 
     this.horizonShine = this.horizonShine.bind(this)
-    this.shadowWidth = this.shadowWidth.bind(this)
-    this.crescentHeight = this.crescentHeight.bind(this)
     this.planetStyleProperties = this.planetStyleProperties.bind(this)
     this.planetSize = this.planetSize.bind(this)
     this.planetSizeWeighted = this.planetSizeWeighted.bind(this)
@@ -37,32 +35,13 @@ export default class Planet extends Component {
       scrolled * -1.3 : (peakShine - (scrolled - peakShine)) * -1.3
   }
 
-  crescentHeight() {
-    const { scrolled, isPortrait } = this.props
-
-    return isPortrait ?
-      this.planetSizeWeighted(30 + (scrolled * 5)) :
-      this.planetSizeWeighted(30 + (scrolled * 4))
-  }
-
-  shadowWidth() {
-    const { scrolled, isPortrait } = this.props
-
-    return isPortrait ?
-      `${this.planetSize() + this.planetSizeWeighted(scrolled * 7)}px` :
-      `${this.planetSize() + this.planetSizeWeighted(scrolled * 2.5)}px`
-  }
-
   planetStyleProperties() {
-    const { scrolled } = this.props
     return {
       horizonShine: this.horizonShine(),
       horizonShineBlue: 'rgb(122, 201, 255)',
       planetOverlayColor: 'rgba(109, 145, 145, 0.65)',
       shadowColor: 'rgb(35, 35, 35)',
-      shadowSpread: this.planetSizeWeighted(10 + (scrolled * 1.2)),
-      shadowWidth: this.shadowWidth(),
-      crescentHeight: this.crescentHeight(),
+      shadowSpread: 12,
       planetSize: this.planetSize()
     }
   }
@@ -75,9 +54,10 @@ export default class Planet extends Component {
       shadowColor,
       shadowSpread,
       shadowWidth,
-      crescentHeight,
       planetSize
     } = this.planetStyleProperties()
+
+    const { transitionPeriod, isPortrait, scrolled } = this.props
 
     return(
       <div id="planet-outer" style={{
@@ -88,12 +68,12 @@ export default class Planet extends Component {
         width: `${planetSize}px`,
         height: `${planetSize}px`,
         borderRadius: '50%',
-        marginTop: '85vh',
+        marginTop: isPortrait ? '65vh' : '85vh',
         zIndex: 1
       }}>
         <div id="planet-inner" style={{
           background: planetOverlayColor,
-          transition: 'boxShadow 0.2 linear',
+          transition: `box-shadow ${transitionPeriod} linear`,
           width: `${planetSize}px`,
           height: `${planetSize}px`,
           borderRadius: '50%',
@@ -107,12 +87,13 @@ export default class Planet extends Component {
         <div id="planet-shadow" style={{
           position: 'absolute',
           background: shadowColor,
-          width: shadowWidth,
+          width: `${planetSize}px`,
           height: `${planetSize}px`,
           borderRadius: '50%',
-          marginTop: `${crescentHeight}px`,
-          transfrom: `translateY(${crescentHeight}px)`,
-          transition: 'boxShadow 0.2 linear',
+          marginTop: isPortrait ? '20px' : '25px',
+          transform: `scaleX(${1 + (scrolled * (isPortrait ? 0.01 : 0.005))}) 
+                      translate(0px, ${scrolled * (isPortrait ? 3 : 2) + 'px'})`,
+          transition: `transform ${transitionPeriod / 1000}s linear`,
           boxShadow:        `0px -5px ${shadowSpread * 1.2}px
                             ${shadowSpread}px rgb(35, 35, 35)`,
           WebkitBoxShadow:  `0px -5px ${shadowSpread * 1.2}px
