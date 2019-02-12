@@ -91,6 +91,7 @@ export default class Planet extends Component {
           height: `${planetSize}px`,
           borderRadius: '50%',
           marginTop: isPortrait ? '20px' : '25px',
+          willChange: 'transform',
           transform: `scaleX(${1 + (scrolled * (isPortrait ? 0.01 : 0.005))}) 
                       translate(0px, ${scrolled * (isPortrait ? 3 : 2) + 'px'})`,
           transition: `transform ${transitionPeriod / 1000}s linear`,

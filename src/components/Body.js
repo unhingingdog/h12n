@@ -117,14 +117,13 @@ export default class Body extends Component {
             I hate planning trips to the airport. I always wondered why Google is able 
             to both plan a journey to the airport and show a flight status based on a 
             flight number, but it can’t just tell me when to leave my current location 
-            based on my flight number alone. I found that that there are probably good
-            reasons that they haven't created such a feature, but I managed to 
-            successfully implement it in this app.
+            based on my flight number alone. I managed to 
+            successfully implement this feature in this app.
           </p>
           <p>
             It’s probably not economically viable as a consumer-facing application, 
-            and will require a lot of hard coding in order to work outside of New 
-            Zealand (airline industry data in neither abundant or developer-friendly). 
+            and will require a lot of hard-coding in order to work outside of New 
+            Zealand (airline industry data is tricky to work with). 
             However, it works for most flights in New Zealand. (e.g. JQ291 - a 
             Wellington to Christchurch flight).
           </p>
@@ -132,7 +131,7 @@ export default class Body extends Component {
             I wrote a backend in Express, which mashes together the user’s location, 
             flight data, and Google Maps trip data. The frontend is made with React 
             and Redux. I took a functional approach throughout the app. A significant 
-            Google Maps price inspired me to use dependency injection, to enable me 
+            Google Maps price inspired me to inject the data APIs, in order to 
             to easily swap out the navigation and airline data sources if necessary.
           </p>
         </BodyCard>

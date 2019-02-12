@@ -19,6 +19,7 @@ export default class Sun extends Component {
         height: `${this.sunSize}vw`,
         borderRadius: '50%',
         transition: `transform ${transitionPeriod / 1000}s linear`,
+        willChange: 'transform',
         transform: `translateY(${this.sunRise}px)`,
         boxShadow: `0 0 80px goldenrod,
                     0 0 20px goldenrod,
