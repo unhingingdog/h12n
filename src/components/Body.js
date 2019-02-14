@@ -235,6 +235,9 @@ export default class Body extends Component {
             doing multidisciplinary technical work, and learning from people 
             with different backgrounds and skillsets. 
           </p>
+          <p>
+           For more projects, check out <a href="https://codepen.io/hamishgilkison/pen/yZxLwL">my Codepen</a>. 
+          </p>
         </div>
       </div>
     )
