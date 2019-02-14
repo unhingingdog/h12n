@@ -236,7 +236,8 @@ export default class Body extends Component {
             with different backgrounds and skillsets. 
           </p>
           <p>
-           For more projects, check out <a href="https://codepen.io/hamishgilkison/pen/yZxLwL">my Codepen</a>. 
+           For more projects, check out 
+           <a href="https://codepen.io/hamishgilkison/pen/yZxLwL" className="body-link" target="_blank">my Codepen</a>. 
           </p>
         </div>
       </div>
