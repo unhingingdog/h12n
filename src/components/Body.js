@@ -83,12 +83,12 @@ export default class Body extends Component {
             This project enabled me to improve my skills across functional and functional 
             reactive programming, as well as ES6 class-based object-orientated programming. 
             It also involved theoretical knowledge, requiring a crash-course in physics 
-            and trigonometry (greatly assisted by Daniel Shiffman’s &nbsp; 
+            and trigonometry (greatly assisted by Daniel Shiffman’s&nbsp; 
             <a className="body-link" href="https://natureofcode.com/book/" target="_blank">
             The Nature of Code</a>), and an understanding of computer science principles.
           </p>
           <p>
-            This was inspired by a &nbsp;
+            This was inspired by a&nbsp;
             <a 
               className="body-link" 
               href="https://www.youtube.com/watch?v=L0KuAx1COEk"
@@ -236,7 +236,7 @@ export default class Body extends Component {
             with different backgrounds and skillsets. 
           </p>
           <p>
-           For more projects, check out 
+           For more projects, check out&nbsp; 
            <a href="https://codepen.io/hamishgilkison/pen/yZxLwL" className="body-link" target="_blank">my Codepen</a>. 
           </p>
         </div>
