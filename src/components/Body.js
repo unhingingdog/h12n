@@ -237,7 +237,7 @@ export default class Body extends Component {
           </p>
           <p>
            For more projects, check out&nbsp; 
-           <a href="https://codepen.io/hamishgilkison/pen/yZxLwL" className="body-link" target="_blank">my Codepen</a>. 
+           <a href="https://codepen.io/hamishgilkison" className="body-link" target="_blank">my Codepen</a>. 
           </p>
         </div>
       </div>
