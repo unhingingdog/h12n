@@ -41,7 +41,7 @@ export default class Body extends Component {
         <div className="body-copy intro-text">
           <h1>About me.</h1>
           <p>
-            I’m a wellington-based front-end developer, seeking junior to 
+            I’m a Wellington-based front-end developer, seeking junior to 
             intermediate level work. I started dabbling in software development 
             as a hobby in 2015, before discovering that it’s the most 
             intellectually and creatively fulfilling work possible. 
