@@ -6,10 +6,12 @@ import judgmentSquidPreview from '../assets/images/judgmentSquidPreview.png'
 import GTFOPreview from '../assets/images/GTFOPreview.png'
 import h12nScreenshot from '../assets/images/h12n-preview.png'
 import tokamakPreview from '../assets/images/tokamakPreview.png'
+import reactFacePreview from '../assets/images/reactFacePreview.png'
 
 import githubIcon from '../assets/images/github-icon.png'
 import browserIcon from '../assets/images/browserIcon.png'
 import appStoreIcon from '../assets/images/app-store-icon.png'
+import npmIcon from '../assets/images/npm-icon.png'
 
 export default class Body extends Component {
   constructor(props) {
@@ -100,6 +102,47 @@ export default class Body extends Component {
             intuition. At present, the app shows something close to the end state 
             of a game in which users will built up the capabilities of the reactor 
             in order to confine the plasma.
+          </p>
+        </BodyCard>
+
+        <BodyCard
+          appearAt={200}
+          title="react-face"
+          preview={reactFacePreview}
+          tech={['react', 'js']}
+          externalIcons={[
+            {image: githubIcon, link:'https://github.com/unhingingdog/react-face' },
+            {image: npmIcon, link:'https://www.npmjs.com/package/react-face' },
+            {image: browserIcon, link: 'https://react-face-demo.surge.sh/'}
+          ]}
+        >
+          <p>
+            react-face is a component which uses the webcam to detect users'
+            face positions, and inject this data into an application using the
+            "render-prop pattern". react-face
+            operates fully on the client-side's main thread; avoiding the need 
+            for a web worker permits easy integration into apps using create-react-app.
+            Optimisations are dynamically made to the image data and parameters of 
+            the facial-detection algorithm (
+            <a 
+              className="body-link" 
+              href="https://github.com/tehnokv/picojs"
+              target="_blank"
+            >Pico.js</a> 
+            ), in order to use the minimum amount of processing required to make a detection.
+          </p>
+          <p>
+            The work of the image recognition process is split into chunks which
+            run each frame, time-permitting (similar to the way React's Fiber
+            reconciliation algorithm works). Detections are made at a rate of either
+            20, 40, 60 times per second, depending on the quality of the
+            image, proximity of faces, and other work occurring on the main-thread.
+          </p>
+          <p>
+            I created this package after using the experimental face detection 
+            API in Chrome, which runs far too slowly to use without a worker.
+            This solution trades accuracy for speed, making it possible to
+            run animations at or near 60fps whilst making detections.
           </p>
         </BodyCard>
 
