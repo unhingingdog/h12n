@@ -19,6 +19,7 @@ export default class App extends Component {
     this.windowDimensionsChange = this.windowDimensionsChange.bind(this)
     this.renderOdysseyScene = this.renderOdysseyScene.bind(this)
     this.renderBody = this.renderBody.bind(this)
+    this.forceEndOdysseyScene = this.forceEndOdysseyScene.bind(this)
   }
 
   handleScroll() {
@@ -30,6 +31,11 @@ export default class App extends Component {
     })
   }
 
+  forceEndOdysseyScene() {
+    this.setState({ odysseyScenePlayed: true })
+    window.scrollTo(0,0)
+  }
+
   windowDimensionsChange() {
     this.setState({
       screenWidth: window.innerWidth,
@@ -38,7 +44,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    if (window.innerWidth > 1280) this.setState({ odysseyScenePlayed: true })
+    if (window.innerWidth > 1280) this.forceEndOdysseyScene()
   
     window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('resize', this.windowDimensionsChange)
@@ -97,6 +103,7 @@ export default class App extends Component {
           screenHeight={screenHeight}
           isPortrait={isPortrait}
           snapToTop={this.state.odysseyScenePlayed}
+          forceToContentStart={this.forceEndOdysseyScene}
         />
         {this.renderBody()}
       </div>
