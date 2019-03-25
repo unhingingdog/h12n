@@ -38,6 +38,8 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    if (window.innerWidth > 1280) this.setState({ odysseyScenePlayed: true })
+  
     window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('resize', this.windowDimensionsChange)
   }

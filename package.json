@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && webpack -p",
-    "serve": "webpack-dev-server --host 192.168.1.15 --port 2001"
+    "serve": "webpack-dev-server --host 192.168.1.7 --port 2001"
   },
   "author": "Hamish Gilkison",
   "license": "ISC",

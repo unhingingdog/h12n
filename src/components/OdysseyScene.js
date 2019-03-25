@@ -40,7 +40,7 @@ export default class OdysseyScene extends Component {
   }
 
   render() {
-    const { scrolled, width, screenHeight, isPortrait } = this.props
+    const { scrolled, width, screenHeight, isPortrait, forceEnd } = this.props
 
     return(
       <div className="odyssey-scene-container">
@@ -50,6 +50,7 @@ export default class OdysseyScene extends Component {
           screenHeight={screenHeight}
           isPortrait={isPortrait}
           transitionPeriod={this.state.transitionPeriod * 4}
+          forceEnd={forceEnd}
         />
         <Sun
           scrolled={scrolled}

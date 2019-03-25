@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ screenHeight, isPortrait, snapToTop }) => {
+export default ({ screenHeight, isPortrait, snapToTop, forceEnd }) => {
   const visibleAt = screenHeight * (isPortrait ? 0.3 : 0.45)
   const position = snapToTop ? 'fixed' : 'absolute'
   const spaceBelowPlanet = isPortrait ? 0.85 : 1.16
@@ -22,7 +22,7 @@ export default ({ screenHeight, isPortrait, snapToTop }) => {
     }
 
   return(
-    <div className="title-container">
+    <div className="title-container" onClick={forceEnd}>
       <h1 style={style} className="title">
         HAMISH GILKISON
       </h1>
